@@ -11,15 +11,13 @@ function Login() {
           用户名：
           <input type="text" placeholder="请输入用户名" />
         </label>
-        <br />
         <label>
           密&nbsp;&nbsp;&nbsp;码：
           <input type="password" placeholder="请输入密码" />
         </label>
-        <br />
         <label>
           <input type="checkbox" />
-          <span>记住我</span>
+          记住我
         </label>
         <div className="loginButton">
           <button>注册</button>
