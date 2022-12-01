@@ -51,9 +51,7 @@
   letter-spacing: 1px;
   transition: 0.3s ease-in-out;
 }
-.login .loginForm input[type="password"] {
-  margin-left: 15px;
-}
+
 .login .loginForm input[type="text"]:focus,
 .login .loginForm input[type="password"]:focus {
   background: rgba(255, 255, 255, 1);
@@ -114,13 +112,27 @@
     margin-left: -100px;
     font-size: 1rem;
   }
+
+  .login .loginForm .loginButton {
+    margin: 30px 0 0 90px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .login .loginForm {
+    font-size: 1.3rem;
+  }
   .login .loginForm input[type="checkbox"] {
-    left: 60px;
+    width: 20px;
+    height: 20px;
+    left: 50px;
   }
   .login .loginForm span {
     left: 80px;
   }
   .login .loginForm .loginButton {
-    margin: 30px 0 0 90px;
+    margin: 50px 0 0 90px;
+  }
+  .login .loginForm .loginButton button {
+    font-size: 1.3rem;
   }
 }

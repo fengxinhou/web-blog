@@ -13,9 +13,10 @@ function Login() {
         </label>
         <br />
         <label>
-          密码：
+          密&nbsp;&nbsp;&nbsp;码：
           <input type="password" placeholder="请输入密码" />
         </label>
+        <br />
         <label>
           <input type="checkbox" />
           <span>记住我</span>
