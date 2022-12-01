@@ -1,11 +1,32 @@
-import React from 'react';
-
+import React from "react";
+import "./login.css";
+import loginImg from "../../assets/img/login-pic.svg";
 function Login() {
-    return (
-        <div>
-            登录页面
+  return (
+    <div className="login">
+      <img src={loginImg} alt="login" />
+      <h1>博客园</h1>
+      <form className="loginForm">
+        <label>
+          用户名：
+          <input type="text" placeholder="请输入用户名" />
+        </label>
+        <br />
+        <label>
+          密码：
+          <input type="password" placeholder="请输入密码" />
+        </label>
+        <label>
+          <input type="checkbox" />
+          <span>记住我</span>
+        </label>
+        <div className="loginButton">
+          <button>注册</button>
+          <button>登录</button>
         </div>
-    );
+      </form>
+    </div>
+  );
 }
 
 export default Login;
