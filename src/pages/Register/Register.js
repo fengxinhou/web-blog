@@ -17,7 +17,7 @@ function Register() {
     e.preventDefault();
     console.log(user);
 
-    //登录完成后，设置表单为空
+    //注册完成后，设置表单为空
   };
   return (
     <div className="register">

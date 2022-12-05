@@ -7,10 +7,11 @@
   grid-template-columns: repeat(1, 100%);
   justify-items: center;
 }
+
 .login img {
   width: 80%;
   height: 80%;
-  margin-top: 80px;
+  margin-top: 50px;
   animation: upDown 3s linear infinite;
 }
 @keyframes upDown {
@@ -32,18 +33,17 @@
   font-style: italic;
   letter-spacing: 20px;
 }
+
 .login .loginForm {
   font-size: 0.8rem;
   display: grid;
-  grid-template-rows: 70px 70px 38px 40px;
+  grid-template-rows: 38px 38px 38px 38px;
+  grid-gap: 20px;
   justify-items: baseline;
-  height: 300px;
-  width: 300px;
-  margin-top: 30px;
 }
 .login .loginForm input[type="text"],
 .login .loginForm input[type="password"] {
-  width: 230px;
+  width: 70%;
   height: 38px;
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
@@ -69,9 +69,13 @@
   color: #121212;
   opacity: 0.8;
 }
+
+.login .loginForm input[type="checkbox"] {
+  margin-right: 10px;
+}
 .login .loginForm .loginButton {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: repeat(2, 50%);
   font-size: 0.8rem;
 }
 .login .loginForm .loginButton a {
@@ -96,30 +100,20 @@
   background-color: #fff;
   color: #121212;
 }
+
 @media screen and (min-width: 768px) {
   .login {
-    grid-template-columns: 40% 50% 10%;
-    grid-template-rows: 10% 60% 30%;
+    grid-template-columns: repeat(2, 50%);
+  }
+  .login h1 {
+    top: 50px;
   }
   .login img {
-    width: 100%;
-    grid-column: 1 / 2;
-    grid-row: 2 /3;
-    margin-top: 0;
+    margin-top: -10px;
   }
   .login .loginForm {
     width: 100%;
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    font-size: 1.2rem;
-    grid-template-rows: 90px 90px 50px 50px;
-  }
-  .login .loginForm input[type="text"],
-  .login .loginForm input[type="password"] {
-    width: 75%;
-    font-size: 1.2rem;
-  }
-  .login .loginForm .loginButton button {
-    font-size: 1.2rem;
+    margin-top: 280px;
+    font-size: 1rem;
   }
 }

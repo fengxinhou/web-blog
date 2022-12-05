@@ -7,11 +7,10 @@
   grid-template-columns: repeat(1, 100%);
   justify-items: center;
 }
-
 .register img {
   width: 80%;
   height: 80%;
-  margin-top: 50px;
+  margin-top: 80px;
   animation: upDown 3s linear infinite;
 }
 @keyframes upDown {
@@ -33,17 +32,18 @@
   font-style: italic;
   letter-spacing: 20px;
 }
-
 .register .registerForm {
   font-size: 0.8rem;
   display: grid;
-  grid-template-rows: 38px 38px 38px 38px;
-  grid-gap: 20px;
+  grid-template-rows: 70px 70px 38px;
   justify-items: baseline;
+  height: 300px;
+  width: 300px;
+  margin-top: 30px;
 }
 .register .registerForm input[type="text"],
 .register .registerForm input[type="password"] {
-  width: 70%;
+  width: 230px;
   height: 38px;
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
@@ -69,39 +69,48 @@
   color: #121212;
   opacity: 0.8;
 }
-
 .register .registerForm .registerButton {
-  display: grid;
-  grid-template-columns: repeat(2, 50%);
-  font-size: 0.8rem;
+  margin-left: 100px;
 }
 .register .registerForm .registerButton button {
   color: #fff;
   width: 80px;
-  margin-right: 80px;
-  font-weight: 700;
+  height: 30px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 10px;
+  margin-left: 95px;
 }
 .register .registerForm .registerButton button:hover {
+  font-size: 0.8rem;
   cursor: pointer;
   background-color: #fff;
   color: #121212;
 }
-
 @media screen and (min-width: 768px) {
   .register {
-    grid-template-columns: repeat(2, 50%);
-  }
-  .register h1 {
-    top: 50px;
+    grid-template-columns: 40% 50% 10%;
+    grid-template-rows: 10% 60% 30%;
   }
   .register img {
-    margin-top: -10px;
+    width: 100%;
+    grid-column: 1/2;
+    grid-row: 2/3;
+    margin-top: 0;
   }
   .register .registerForm {
     width: 100%;
-    margin-top: 280px;
-    font-size: 1rem;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    font-size: 1.2rem;
+    grid-template-rows: 90px 90px 38px;
+  }
+  .register .registerForm input[type="text"],
+  .register .registerForm input[type="password"] {
+    width: 75%;
+    font-size: 1.2rem;
+  }
+  .register .registerForm .registerButton button {
+    font-size: 1.2rem;
+    margin-left: 120px;
   }
 }

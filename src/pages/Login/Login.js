@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./login.css";
 import loginImg from "../../assets/img/login-pic.svg";
+import { Link } from "react-router-dom";
 function Login() {
   const [user, setUser] = useState({
     id: -1,
@@ -51,7 +52,9 @@ function Login() {
           记住我
         </label>
         <div className="loginButton">
-          <button type="submit">注册</button>
+          <button>
+            <Link to={"/register"}>注册</Link>
+          </button>
           <button type="submit">登录</button>
         </div>
       </form>
