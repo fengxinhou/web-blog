@@ -5,12 +5,14 @@
   background-size: cover;
   display: grid;
   grid-template-columns: repeat(1, 100%);
-  justify-items: center;
+  grid-template-rows: 10% 30% 50% 10%;
+  place-items: center;
 }
 .register img {
-  width: 80%;
-  height: 80%;
-  margin-top: 80px;
+  grid-row: 2 /3;
+  width: 90%;
+  height: 90%;
+  margin-top: 10px;
   animation: upDown 3s linear infinite;
 }
 @keyframes upDown {
@@ -25,14 +27,14 @@
   }
 }
 .register h1 {
-  position: absolute;
   width: 100%;
-  margin-top: 20px;
   text-align: center;
   font-style: italic;
   letter-spacing: 20px;
+  grid-row: 1 /2;
 }
 .register .registerForm {
+  grid-row: 3/5;
   font-size: 0.8rem;
   display: grid;
   grid-template-rows: 70px 70px 38px;
@@ -90,6 +92,12 @@
   .register {
     grid-template-columns: 40% 50% 10%;
     grid-template-rows: 10% 60% 30%;
+    place-items: center;
+  }
+  .register h1 {
+    margin-top: 20px;
+    grid-column: 1 / 4;
+    grid-row: 1 /2;
   }
   .register img {
     width: 100%;

@@ -1,23 +1,32 @@
 import React, { useState } from "react";
 import registerImg from "../../assets/img/login-pic.svg";
 import "./register.css";
+import { useStore } from "../../store";
+import { useNavigate } from "react-router-dom";
 function Register() {
   const [user, setUser] = useState({
     id: -1,
     name: "",
     password: "",
   });
+  const { registerStore } = useStore();
+  const navigate = useNavigate();
   const onFormUpdate = (key, value) => {
     setUser({
       ...user,
       [key]: value,
     });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(user);
-
-    //注册完成后，设置表单为空
+    const { name, password } = user;
+    try {
+      await registerStore.register({ name, password });
+      navigate("/login");
+    } catch (e) {
+      alert("注册失败");
+    }
   };
   return (
     <div className="register">

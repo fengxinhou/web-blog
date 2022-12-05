@@ -1,8 +1,10 @@
 import React from "react";
+import RegisterStore from "./registerStore";
 import LoginStore from "./loginStore";
 
 class RootStore {
   constructor() {
+    this.registerStore = new RegisterStore();
     this.loginStore = new LoginStore();
   }
 }
