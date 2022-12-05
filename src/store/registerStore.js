@@ -7,9 +7,7 @@ class RegisterStore {
     makeAutoObservable(this);
   }
   register = async ({ name, password }) => {
-    console.log("注册逻辑");
-    const res = await axios.post(URL, { name, password });
-    console.log("login request", res.data);
+    await axios.post(URL, { name, password });
   };
 }
 

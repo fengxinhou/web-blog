@@ -19,25 +19,19 @@ function Login() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(newUser);
     if (!newUser.name || !newUser.password) {
       alert("用户名或密码不为空");
     }
 
     if (newUser.name && newUser.password) {
       const res = await loginStore.login();
-      //res为提交的数据
-      console.log("login data", res);
       const data = res.find((item) => {
         return item.name === newUser.name;
       });
-      console.log(data);
-      //data undefined 用户不存在
       if (data === undefined) {
         alert("用户不存在，请先进行注册");
         setNewUser({ id: 0, name: "", password: "" });
       } else {
-        console.log("当前用户", newUser);
         if (data.name === newUser.name && data.password === newUser.password) {
           navigator("/");
         } else {

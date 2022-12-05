@@ -19,7 +19,6 @@ function Register() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
     const { name, password } = user;
     try {
       await registerStore.register({ name, password });
