@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "./login.css";
-import loginImg from "../../assets/img/login-pic.svg";
-function Login() {
+import registerImg from "../../assets/img/login-pic.svg";
+import "./register.css";
+function Register() {
   const [user, setUser] = useState({
     id: -1,
-    name: "Jon",
-    password: "123456",
+    name: "",
+    password: "",
   });
   const onFormUpdate = (key, value) => {
     setUser({
@@ -20,10 +20,10 @@ function Login() {
     //登录完成后，设置表单为空
   };
   return (
-    <div className="login">
-      <img src={loginImg} alt="login" />
+    <div className="register">
+      <img src={registerImg} alt="register" />
       <h1>博客园</h1>
-      <form className="loginForm" onSubmit={handleSubmit}>
+      <form className="registerForm" onSubmit={handleSubmit}>
         <label>
           用户名：
           <input
@@ -46,17 +46,12 @@ function Login() {
             }}
           />
         </label>
-        <label>
-          <input type="checkbox" />
-          记住我
-        </label>
-        <div className="loginButton">
-          <button type="submit">注册</button>
-          <button type="submit">登录</button>
+        <div className="registerButton">
+          <button type="submit">确定</button>
         </div>
       </form>
     </div>
   );
 }
 
-export default Login;
+export default Register;
