@@ -5,12 +5,21 @@
   background-size: cover;
   display: grid;
   grid-template-columns: repeat(1, 100%);
-  justify-items: center;
+  grid-template-rows: 10% 30% 50% 10%;
+  place-items: center;
+}
+.login h1 {
+  width: 100%;
+  text-align: center;
+  font-style: italic;
+  letter-spacing: 20px;
+  grid-row: 1 /2;
 }
 .login img {
-  width: 80%;
-  height: 80%;
-  margin-top: 80px;
+  grid-row: 2 /3;
+  width: 90%;
+  height: 90%;
+  margin-top: 10px;
   animation: upDown 3s linear infinite;
 }
 @keyframes upDown {
@@ -24,18 +33,12 @@
     transform: translateY(-20px);
   }
 }
-.login h1 {
-  position: absolute;
-  width: 100%;
-  margin-top: 20px;
-  text-align: center;
-  font-style: italic;
-  letter-spacing: 20px;
-}
+
 .login .loginForm {
+  grid-row: 3/5;
   font-size: 0.8rem;
   display: grid;
-  grid-template-rows: 70px 70px 38px 40px;
+  grid-template-rows: 70px 70px 40px;
   justify-items: baseline;
   height: 300px;
   width: 300px;
@@ -100,6 +103,12 @@
   .login {
     grid-template-columns: 40% 50% 10%;
     grid-template-rows: 10% 60% 30%;
+    place-items: center;
+  }
+  .login h1 {
+    margin-top: 20px;
+    grid-column: 1 / 4;
+    grid-row: 1 /2;
   }
   .login img {
     width: 100%;
@@ -112,7 +121,7 @@
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     font-size: 1.2rem;
-    grid-template-rows: 90px 90px 50px 50px;
+    grid-template-rows: 90px 90px 50px;
   }
   .login .loginForm input[type="text"],
   .login .loginForm input[type="password"] {
