@@ -14,7 +14,6 @@
 }
 .home header h1 {
   font-size: 1.5rem;
-  /*margin: 30px auto;*/
   margin-top: 20px;
 }
 .home header img {
@@ -31,6 +30,15 @@
 }
 .home .main aside {
   border-right: 1px solid #777;
+}
+.home .main aside .menuItem {
+  width: 70%;
+  height: 50px;
+  font-size: 1.5rem;
+}
+.home .main aside .menuItem i {
+  font-size: 1.5rem;
+  margin-right: 5px;
 }
 .home footer {
   width: 100%;

@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./home.css";
 import homeLogo from "../../assets/img/header-img.svg";
+import { useStore } from "../../store";
 function Home() {
+  const { menuStore } = useStore();
+  useEffect(() => {
+    menuStore.getMenu().then();
+    console.log("test");
+  }, [menuStore]);
+
   return (
     <div className="home">
       <header>
@@ -10,9 +17,14 @@ function Home() {
       </header>
       <div className="main">
         <aside>
-          <div>数据概览</div>
-          <div>内容管理</div>
-          <div>发布文章</div>
+          {menuStore.menu.map((item, index) => {
+            return (
+              <div key={index} className="menuItem">
+                <i className="iconfont">{item.icon}</i>
+                <span>{item.title}</span>
+              </div>
+            );
+          })}
         </aside>
         <main>主体部分</main>
       </div>
