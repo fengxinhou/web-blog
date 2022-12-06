@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./home.css";
 import homeLogo from "../../assets/img/header-img.svg";
 import { useStore } from "../../store";
+import { observer } from "mobx-react-lite";
 function Home() {
   const { menuStore } = useStore();
   useEffect(() => {
@@ -33,4 +34,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default observer(Home);
