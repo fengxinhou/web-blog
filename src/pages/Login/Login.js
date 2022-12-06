@@ -3,7 +3,6 @@ import "./login.css";
 import loginImg from "../../assets/img/login-pic.svg";
 import { useStore } from "../../store";
 import { Link, useNavigate } from "react-router-dom";
-import { observer } from "mobx-react-lite";
 function Login() {
   const [newUser, setNewUser] = useState({
     id: 0,
@@ -79,4 +78,4 @@ function Login() {
   );
 }
 
-export default observer(Login);
+export default Login;

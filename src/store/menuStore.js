@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import axios from "axios";
 
 const URL = "http://localhost:3000/menu";
@@ -9,8 +9,10 @@ class MenuStore {
   }
   getMenu = async () => {
     const res = await axios.get(URL);
-    console.log("res.data", res.data);
-    this.menu = res.data;
+    runInAction(() => {
+      this.menu = res.data;
+    });
+    return this.menu;
   };
 }
 

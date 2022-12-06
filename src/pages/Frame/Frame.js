@@ -1,37 +1,35 @@
 import React, { useEffect } from "react";
-import "./home.css";
+import "./frame.css";
 import homeLogo from "../../assets/img/header-img.svg";
 import { useStore } from "../../store";
 import { observer } from "mobx-react-lite";
-function Home() {
+import { Link, Outlet } from "react-router-dom";
+function Frame() {
   const { menuStore } = useStore();
   useEffect(() => {
     menuStore.getMenu().then();
-    console.log("test");
   }, [menuStore]);
-
   return (
-    <div className="home">
+    <div className="frame">
       <header>
         <img src={homeLogo} alt="logo" />
         <h1>Kai's Blog</h1>
       </header>
       <div className="main">
         <aside>
-          {menuStore.menu.map((item, index) => {
-            return (
-              <div key={index} className="menuItem">
-                <i className="iconfont">{item.icon}</i>
-                <span>{item.title}</span>
-              </div>
-            );
-          })}
+          {menuStore.menu.map((item) => (
+            <div key={item.path} className="menuItem">
+              <i className="iconfont">{item.icon}</i>
+              <Link to={item.path}>{item.title}</Link>
+            </div>
+          ))}
         </aside>
-        <main>主体部分</main>
+        <div>
+          <Outlet />
+        </div>
       </div>
-      <footer>底部</footer>
     </div>
   );
 }
 
-export default observer(Home);
+export default observer(Frame);
