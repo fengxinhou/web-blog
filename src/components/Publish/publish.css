@@ -2,6 +2,9 @@
   color: black;
   font-size: 0.8rem;
 }
+.publish .publish_content {
+  width: 100%;
+}
 .publish .publish_content .publish_header {
   padding: 10px;
   display: flex;
@@ -15,32 +18,31 @@
 }
 .publish .publish_content .publish_form {
   width: 90%;
-  height: 80%;
-  /*border: 1px solid red;*/
   margin: 20px auto;
 }
-.publish .publish_content .publish_form input[type="text"] {
-  width: 200px;
-  height: 30px;
-  margin-bottom: 20px;
+.publish .publish_content .publish_form label {
+  margin-right: 5px;
 }
 .publish .publish_content .publish_form .article_title {
+  height: 50px;
 }
-
-.publish .publish_content .publish_form .article_category {
+.publish .publish_content .publish_form input[type="text"] {
+  width: 60%;
+  height: 28px;
 }
 
 .publish .publish_content .publish_form .article_content {
   width: 100%;
   border: 1px solid #ccc;
-  height: 500px;
-  margin-bottom: 20px;
+  height: 600px;
+  margin-bottom: 10px;
 }
+
 .publish .publish_content .publish_form .article_content .toolbar {
   border-bottom: 1px solid #ccc;
-  height: 285px;
 }
 .publish .publish_content .publish_form .article_content .editor {
+  height: 300px;
   overflow-y: hidden;
 }
 .publish .publish_content .publish_form .article_button button {
@@ -79,18 +81,23 @@
   .publish {
     font-size: 1rem;
   }
+  .publish .publish_content .publish_form .article_title {
+    height: 50px;
+  }
 
   .publish .publish_content .publish_form input[type="text"] {
-    width: 75%;
-    height: 30px;
+    margin-left: 20px;
   }
   .publish .publish_content .publish_form .article_content {
     margin: 10px auto;
-    width: 80%;
-    height: 300px;
+    width: 71%;
+    height: 500px;
   }
   .publish .publish_content .publish_form .article_content .toolbar {
-    height: 100px;
+    height: 30%;
+  }
+  .publish .publish_content .publish_form .article_content .editor {
+    height: 330px;
   }
   .publish .publish_content .publish_form .article_button button {
     margin-top: 20px;

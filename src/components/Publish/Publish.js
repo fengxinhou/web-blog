@@ -3,31 +3,20 @@ import "./publish.css";
 import { Link } from "react-router-dom";
 import { Editor, Toolbar } from "@wangeditor/editor-for-react";
 function Publish() {
-  const [article, setArticle] = useState({
-    id: 0,
-    userId: 0,
-    url: "",
-    tag: "",
-    title: "",
-    content: "",
-    pubDate: "",
-    status: "",
-  });
+  const [articleTitle, setArticleTitle] = useState("");
   const [editor, setEditor] = useState(null);
-  // 编辑器内容
+
   const [html, setHtml] = useState("<p>hello</p>");
   // 模拟 ajax 请求，异步设置 html
-  useEffect(() => {
-    setTimeout(() => {
-      setHtml("<p>hello world</p>");
-    }, 1500);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setHtml("<p>hello world</p>");
+  //   }, 1500);
+  // }, []);
   const toolbarConfig = {};
-  //编辑器配置
   const editorConfig = {
     placeholder: "请输入内容...",
   };
-  // 及时销毁 editor ，重要！
   useEffect(() => {
     return () => {
       if (editor == null) return;
@@ -35,18 +24,11 @@ function Publish() {
       setEditor(null);
     };
   }, [editor]);
-  const onFormUpdate = (key, value) => {
-    setArticle({
-      ...article,
-      [key]: value,
-    });
-  };
-  const insertText = () => {
-    if (editor == null) return;
-    editor.insertText("hello");
-  };
-  const handleSubmit = (e) => {
-    console.log(e);
+
+  const handlePublishArticle = (e) => {
+    e.preventDefault();
+    //获取到文章的title And html
+    console.log(articleTitle, html);
   };
   return (
     <div className="publish">
@@ -56,29 +38,16 @@ function Publish() {
           &nbsp;>&nbsp;
           <span>发布文章</span>
         </div>
-        <form onSubmit={handleSubmit} className="publish_form">
+        <form onSubmit={handlePublishArticle} className="publish_form">
           <div className="article_title">
             <label>
               标题：
               <input
                 type="text"
                 placeholder="请输入文章标题"
-                value={article.title}
+                value={articleTitle}
                 onChange={(e) => {
-                  onFormUpdate("name", e.target.value);
-                }}
-              />
-            </label>
-          </div>
-          <div className="article_category">
-            <label>
-              分类：
-              <input
-                type="text"
-                placeholder="请输入文章分类"
-                value={article.title}
-                onChange={(e) => {
-                  onFormUpdate("name", e.target.value);
+                  setArticleTitle(e.target.value);
                 }}
               />
             </label>
@@ -100,7 +69,7 @@ function Publish() {
             />
           </div>
           <div className="article_button">
-            <button type="submit" onClick={insertText}>
+            <button type="submit">
               <span>发布文章</span>
             </button>
           </div>
