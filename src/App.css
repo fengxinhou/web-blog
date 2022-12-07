@@ -40,6 +40,16 @@ ul {
   line-height: normal;
   text-decoration: none;
 }
+ol,
+li {
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  list-style: none;
+}
+hr {
+  border: none;
+}
 a:hover {
   text-decoration: none;
 }

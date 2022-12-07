@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./home.css";
 import { Link } from "react-router-dom";
-import Img1 from "../../assets/img/1.png";
+import { useStore } from "../../store";
+import { observer } from "mobx-react-lite";
 function Home() {
+  const { blogListStore } = useStore();
+  useEffect(() => {
+    blogListStore.getBlogList().then();
+  }, [blogListStore]);
   return (
     <div className="home">
       <div className="home_header">
@@ -11,20 +16,26 @@ function Home() {
         <span>文章列表</span>
       </div>
       <div className="home_content">
-        <div className="article_list">
-          <div className="article_item">
-            <img src={Img1} alt="article" />
-            <h3>优站精选</h3>
-            <span>Bootstrap 网站实例</span>
-            <p>
-              Bootstrap 优站精选频道收集了众多基于 Bootstrap
-              构建、设计精美的、有创意的网站。
-            </p>
-          </div>
-        </div>
+        <ol className="article_list">
+          {blogListStore.blogList.map((item) => (
+            <li className="article_item" key={item.id}>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              <div className="article_operator">
+                <time>{item.creationTime}</time>
+                <div className="thumbs">
+                  <i className="iconfont">&#xe65d;</i>
+                  <span>点赞数</span>
+                </div>
+                <button className="continue">继续阅读</button>
+              </div>
+              <hr className="article_divide" />
+            </li>
+          ))}
+        </ol>
       </div>
     </div>
   );
 }
 
-export default Home;
+export default observer(Home);

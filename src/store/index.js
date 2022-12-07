@@ -3,6 +3,7 @@ import RegisterStore from "./registerStore";
 import LoginStore from "./loginStore";
 import MenuStore from "./menuStore";
 import ArticleStore from "./articleStore";
+import BlogListStore from "./blogListStore";
 
 class RootStore {
   constructor() {
@@ -10,6 +11,7 @@ class RootStore {
     this.loginStore = new LoginStore();
     this.menuStore = new MenuStore();
     this.articleStore = new ArticleStore();
+    this.blogListStore = new BlogListStore();
   }
 }
 
