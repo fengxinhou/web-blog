@@ -2,14 +2,8 @@
   color: black;
   font-size: 0.8rem;
 }
-.publish .publish_content {
-  display: grid;
-  grid-template-rows: 20% 80%;
-}
 .publish .publish_content .publish_header {
-  height: 100%;
-  width: 100%;
-  padding-top: 15px;
+  padding: 10px;
   display: flex;
   box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.2);
 }
@@ -17,21 +11,18 @@
   text-decoration: none;
   color: black;
   float: left;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 .publish .publish_content .publish_form {
-  width: 80%;
-  height: 100%;
-  justify-self: center;
-  padding-top: 30px;
-  display: grid;
-  grid-template-rows: 10% 10% 30% 40% 10%;
-  grid-gap: 15px;
-  justify-items: start;
+  width: 90%;
+  height: 80%;
+  /*border: 1px solid red;*/
+  margin: 20px auto;
 }
 .publish .publish_content .publish_form input[type="text"] {
-  width: 160px;
-  height: 20px;
+  width: 200px;
+  height: 30px;
+  margin-bottom: 20px;
 }
 .publish .publish_content .publish_form .article_title {
 }
@@ -40,6 +31,17 @@
 }
 
 .publish .publish_content .publish_form .article_content {
+  width: 100%;
+  border: 1px solid #ccc;
+  height: 500px;
+  margin-bottom: 20px;
+}
+.publish .publish_content .publish_form .article_content .toolbar {
+  border-bottom: 1px solid #ccc;
+  height: 285px;
+}
+.publish .publish_content .publish_form .article_content .editor {
+  overflow-y: hidden;
 }
 .publish .publish_content .publish_form .article_button button {
   cursor: pointer;
@@ -48,9 +50,6 @@
   background-color: deepskyblue;
   padding: 6px 10px;
   font-size: 0.8rem;
-  /*padding: 14px 48px;*/
-  /*font-size: 18px;*/
-  /*margin-top: 25px;*/
   border-radius: 0;
   position: relative;
   transition: 0.3s ease-in-out;
@@ -80,14 +79,21 @@
   .publish {
     font-size: 1rem;
   }
-  .publish .publish_content .publish_form {
-    grid-gap: 30px;
-  }
+
   .publish .publish_content .publish_form input[type="text"] {
-    width: 500px;
+    width: 75%;
     height: 30px;
   }
+  .publish .publish_content .publish_form .article_content {
+    margin: 10px auto;
+    width: 80%;
+    height: 300px;
+  }
+  .publish .publish_content .publish_form .article_content .toolbar {
+    height: 100px;
+  }
   .publish .publish_content .publish_form .article_button button {
+    margin-top: 20px;
     font-size: 1rem;
   }
 }
