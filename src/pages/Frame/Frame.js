@@ -24,7 +24,7 @@ function Frame() {
             </div>
           ))}
         </aside>
-        <div>
+        <div className="frame_content">
           <Outlet />
         </div>
       </div>

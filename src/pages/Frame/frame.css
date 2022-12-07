@@ -1,6 +1,6 @@
 .frame {
   height: 100%;
-  background-color: #fff;
+  background-image: url("../../assets/img/bg.png");
   display: grid;
   grid-template-columns: repeat(1, 100%);
   grid-template-rows: 10% 90%;
@@ -8,7 +8,6 @@
 .frame header {
   width: 100%;
   height: 100%;
-  background-image: url("../../assets/img/bg.png");
   background-size: cover;
   display: grid;
   grid-template-columns: 25% 80%;
@@ -30,12 +29,13 @@
 }
 .frame .main aside {
   border-right: 1px solid #777;
-  background-image: url("../../assets/img/bg.png");
+}
+.frame .main .frame_content {
+  background-color: #fff;
 }
 .frame .main aside .menuItem {
   margin-top: 20px;
   width: 100%;
-  /*height: 50px;*/
   font-size: 0.8rem;
 }
 .frame .main aside .menuItem i {
