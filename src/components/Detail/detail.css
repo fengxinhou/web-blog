@@ -1,0 +1,15 @@
+.detail {
+  color: black;
+  font-size: 0.8rem;
+}
+.detail .detail_header {
+  padding: 15px 0 0 20px;
+  height: 50px;
+  display: flex;
+  box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.2);
+}
+@media screen and (min-width: 768px) {
+  .detail .detail_header {
+    font-size: 1rem;
+  }
+}

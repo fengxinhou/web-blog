@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import { history } from "./utils/history";
 import { lazy, Suspense } from "react";
+import Detail from "./components/Detail/Detail";
 
 const Login = lazy(() => import("./pages/Login/Login"));
 const Register = lazy(() => import("./pages/Register/Register"));
@@ -34,6 +35,7 @@ function App() {
               <Route index element={<Home />} />
               <Route path="/publish" element={<Publish />} />
               <Route path="/article" element={<Article />} />
+              <Route path="/detail" element={<Detail />} />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
