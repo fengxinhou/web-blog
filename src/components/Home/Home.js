@@ -1,13 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./home.css";
 import { Link } from "react-router-dom";
 import { useStore } from "../../store";
 import { observer } from "mobx-react-lite";
+import Paging from "../Paging/Paging";
 function Home() {
   const { blogListStore } = useStore();
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 4;
   useEffect(() => {
     blogListStore.getBlogList().then();
   }, [blogListStore]);
+
+  const getPaging = (page) => {
+    setCurrentPage(page);
+  };
+  const beginIndex = (currentPage - 1) * pageSize;
   return (
     <div className="home">
       <div className="home_header">
@@ -17,22 +25,30 @@ function Home() {
       </div>
       <div className="home_content">
         <ol className="article_list">
-          {blogListStore.blogList.map((item) => (
-            <li className="article_item" key={item.id}>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-              <div className="article_operator">
-                <time>{item.creationTime}</time>
-                <div className="thumbs">
-                  <i className="iconfont">&#xe65d;</i>
-                  <span>点赞数</span>
+          {blogListStore.blogList
+            .slice(beginIndex, beginIndex + pageSize)
+            .map((item) => (
+              <li className="article_item" key={item.id}>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <div className="article_operator">
+                  <time>{item.creationTime}</time>
+                  <div className="thumbs">
+                    <i className="iconfont">&#xe65d;</i>
+                    <span>点赞数</span>
+                  </div>
+                  <button className="continue">继续阅读</button>
                 </div>
-                <button className="continue">继续阅读</button>
-              </div>
-              <hr className="article_divide" />
-            </li>
-          ))}
+                <hr className="article_divide" />
+              </li>
+            ))}
         </ol>
+        <Paging
+          currentPage={currentPage}
+          pageSize={pageSize}
+          totalNumber={blogListStore.blogList.length}
+          getPaging={getPaging}
+        />
       </div>
     </div>
   );

@@ -1,0 +1,28 @@
+.paging {
+  /*height: 50px;*/
+  margin-top: 20px;
+  display: flex;
+  font-size: 0.8rem;
+}
+.paging .pages {
+  display: flex;
+  margin-left: 10px;
+}
+.paging .pages .pageNum {
+  display: block;
+  width: 20px;
+  height: 18px;
+  border-radius: 10px;
+  background-color: rgba(199, 199, 199, 0.82);
+  margin-right: 10px;
+  text-align: center;
+}
+@media screen and (min-width: 768px) {
+  .paging {
+    font-size: 1.2rem;
+  }
+  .paging .pages .pageNum {
+    width: 25px;
+    height: 25px;
+  }
+}
