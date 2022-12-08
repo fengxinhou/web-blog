@@ -30,6 +30,7 @@
 .frame .main aside {
   border-right: 1px solid #777;
 }
+
 .frame .main .frame_content {
   background-color: #fff;
 }
@@ -45,6 +46,12 @@
 .frame .main aside .menuItem a {
   text-decoration: none;
   color: white;
+}
+.frame .main aside .highLight {
+  color: #5c94c5;
+}
+.frame .main aside .highLight a {
+  color: #5c94c5;
 }
 
 @media screen and (min-width: 768px) {
