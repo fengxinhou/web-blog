@@ -20,10 +20,10 @@ function Detail() {
         <>
           <div className="detail_header">
             <div className="detail_meta">
-              <span>创建时间</span>
+              <span>创建时间:</span>
               <time>{article.creationTime}</time>
             </div>
-            <h2 className="detail_title">{article.title}</h2>
+            <h1 className="detail_title">{article.title}</h1>
           </div>
           <section className="detail_content">{article.description}</section>
           <div className="detail_remark">
