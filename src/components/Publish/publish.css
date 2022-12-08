@@ -20,11 +20,12 @@
   width: 90%;
   margin: 20px auto;
 }
+.publish .publish_content .publish_form .article_title {
+  margin: 0 auto;
+  height: 50px;
+}
 .publish .publish_content .publish_form label {
   margin-right: 5px;
-}
-.publish .publish_content .publish_form .article_title {
-  height: 50px;
 }
 .publish .publish_content .publish_form input[type="text"] {
   width: 60%;
@@ -94,7 +95,7 @@
     height: 500px;
   }
   .publish .publish_content .publish_form .article_content .toolbar {
-    height: 30%;
+    height: 33%;
   }
   .publish .publish_content .publish_form .article_content .editor {
     height: 330px;
@@ -102,5 +103,15 @@
   .publish .publish_content .publish_form .article_button button {
     margin-top: 20px;
     font-size: 1rem;
+  }
+}
+@media screen and (min-width: 975px) {
+  .publish .publish_content .publish_form .article_content .toolbar {
+    height: 25%;
+  }
+}
+@media screen and (min-width: 1368px) {
+  .publish .publish_content .publish_form .article_content .toolbar {
+    height: 20%;
   }
 }
