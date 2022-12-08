@@ -63,7 +63,9 @@
   grid-column: 2/3;
   width: 60px;
   color: dodgerblue;
+  cursor: pointer;
 }
+
 .home .home_content .article_list .article_item .article_divide {
   width: 50%;
   border-top: 1px solid #ddd;

@@ -39,7 +39,7 @@ function Home() {
                   <time>{item.creationTime}</time>
                   <div className="thumbs">
                     <i className="iconfont">&#xe65d;</i>
-                    <span>点赞数</span>
+                    <span>点赞数:&nbsp;{item.thumbsUp}</span>
                   </div>
                   <button className="continue" onClick={getArticleDetail}>
                     继续阅读
