@@ -6,7 +6,7 @@
   grid-template-rows: 10% 90%;
 }
 .frame header {
-  width: 100%;
+  width: 85%;
   height: 100%;
   background-size: cover;
   display: grid;
@@ -56,7 +56,7 @@
 
 @media screen and (min-width: 768px) {
   .frame {
-    grid-template-rows: 20% 80%;
+    grid-template-rows: 20% 75%;
   }
   .frame header {
     grid-template-columns: 20% 80%;
@@ -72,7 +72,7 @@
   }
   .frame .main {
     height: 100%;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 15% 80%;
   }
   .frame .main aside .menuItem {
     font-size: 1.2rem;

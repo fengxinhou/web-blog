@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./home.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useStore } from "../../store";
@@ -9,9 +9,6 @@ function Home() {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 4;
-  useEffect(() => {
-    blogListStore.getBlogList().then();
-  }, [blogListStore]);
 
   const getPaging = (page) => {
     setCurrentPage(page);
