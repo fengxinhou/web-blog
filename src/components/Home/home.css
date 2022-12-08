@@ -10,7 +10,6 @@
 }
 .home .home_header a {
   text-decoration: none;
-  color: black;
   float: left;
   margin-left: 20px;
 }
@@ -70,6 +69,9 @@
   border-top: 1px solid #ddd;
 }
 @media screen and (min-width: 768px) {
+  .home .home_header {
+    font-size: 1rem;
+  }
   .home .home_content .article_list .article_item .article_operator {
     grid-template-rows: repeat(1, 100%);
     grid-template-columns: repeat(3, 33.333%);

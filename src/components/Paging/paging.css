@@ -1,20 +1,30 @@
 .paging {
   margin-top: 20px;
   display: flex;
+  color: #999;
   font-size: 0.8rem;
 }
-.paging .pages {
-  display: flex;
+.paging .pageText {
+  display: block;
+  padding: 3px 6px;
+  text-align: center;
+}
+.paging button {
+  cursor: pointer;
+  color: #999;
+  padding: 3px 6px;
+  font-size: 0.8rem;
+  margin-right: 20px;
+  border: 1px solid #999;
+  border-radius: 20px;
+  transition: 0.3s ease-in-out;
+}
+.paging .beforePage {
   margin-left: 10px;
 }
-.paging .pages .pageNum {
-  display: block;
-  width: 20px;
-  height: 18px;
-  border-radius: 10px;
-  background-color: rgba(199, 199, 199, 0.82);
-  margin-right: 10px;
-  text-align: center;
+
+.paging .nextPage {
+  margin-left: 20px;
 }
 @media screen and (min-width: 768px) {
   .paging {

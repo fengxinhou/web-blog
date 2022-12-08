@@ -6,29 +6,34 @@ function Paging(props) {
   const totalPage = useMemo(() => {
     return Math.ceil(totalNumber / pageSize);
   }, [pageSize, totalNumber]);
-  const Paging = useMemo(() => {
-    let pageArray = [];
-    for (let index = 0; index < totalPage; index++) {
-      pageArray.push(
-        <span data-index={index + 1} key={index} className="pageNum">
-          {index + 1}
-        </span>
-      );
+
+  const changePage = (index) => {
+    if (currentPage === 1 && index === -1) {
+      alert("当前为首页");
+      return;
     }
-    return pageArray;
-  }, [totalPage]);
-  const changePage = (e) => {
-    let page = e.target.getAttribute("data-index");
-    getPaging(page);
+    if (currentPage === totalPage && index === 1) {
+      alert("当前为最后一页");
+      return;
+    }
+    getPaging(Number(currentPage + index));
   };
+
   return (
     <div className="paging">
-      <span>
-        当前{currentPage}页/共{totalPage}页
+      {currentPage === 1 ? (
+        <span></span>
+      ) : (
+        <button className="beforePage" onClick={() => changePage(-1)}>
+          上一页
+        </button>
+      )}
+      <span className="pageText">
+        第{currentPage}页/共{totalPage}页
       </span>
-      <div className="pages" onClick={changePage}>
-        {Paging}
-      </div>
+      <button className="nextPage" onClick={() => changePage(1)}>
+        下一页
+      </button>
     </div>
   );
 }
