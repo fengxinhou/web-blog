@@ -67,10 +67,10 @@ function Login() {
             }}
           />
         </label>
+        <div className="go_register">
+          <Link to={"/register"}>还没账号，去注册</Link>
+        </div>
         <div className="loginButton">
-          <button>
-            <Link to={"/register"}>注册</Link>
-          </button>
           <button type="submit">登录</button>
         </div>
       </form>

@@ -8,6 +8,7 @@ function Register() {
     id: -1,
     name: "",
     password: "",
+    rePass: "",
   });
   const { registerStore } = useStore();
   const navigate = useNavigate();
@@ -19,10 +20,14 @@ function Register() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, password } = user;
+    const { name, password, rePass } = user;
     try {
-      await registerStore.register({ name, password });
-      navigate("/login");
+      if (password === rePass) {
+        await registerStore.register({ name, password });
+        navigate("/login");
+      } else {
+        alert("密码输入不一致");
+      }
     } catch (e) {
       alert("注册失败");
     }
@@ -49,6 +54,17 @@ function Register() {
             type="password"
             placeholder="请输入密码"
             value={user.password}
+            onChange={(e) => {
+              onFormUpdate("password", e.target.value);
+            }}
+          />
+        </label>
+        <label>
+          密&nbsp;&nbsp;&nbsp;码：
+          <input
+            type="password"
+            placeholder="请再次输入密码"
+            value={user.rePass}
             onChange={(e) => {
               onFormUpdate("password", e.target.value);
             }}

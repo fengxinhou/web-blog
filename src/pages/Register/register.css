@@ -5,7 +5,7 @@
   background-size: cover;
   display: grid;
   grid-template-columns: repeat(1, 100%);
-  grid-template-rows: 10% 30% 50% 10%;
+  grid-template-rows: 10% 30% 30% 30%;
   place-items: center;
 }
 .register img {
@@ -34,14 +34,12 @@
   grid-row: 1 /2;
 }
 .register .registerForm {
-  grid-row: 3/5;
+  grid-row: 3/4;
   font-size: 0.8rem;
   display: grid;
-  grid-template-rows: 70px 70px 38px;
-  justify-items: baseline;
+  grid-template-rows: 70px 70px 70px 38px;
   height: 300px;
   width: 300px;
-  margin-top: 30px;
 }
 .register .registerForm input[type="text"],
 .register .registerForm input[type="password"] {
@@ -72,15 +70,14 @@
   opacity: 0.8;
 }
 .register .registerForm .registerButton {
-  margin-left: 100px;
+  margin: 0 auto;
 }
 .register .registerForm .registerButton button {
   color: #fff;
-  width: 80px;
+  width: 100px;
   height: 30px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 10px;
-  margin-left: 95px;
 }
 .register .registerForm .registerButton button:hover {
   font-size: 0.8rem;
@@ -90,7 +87,7 @@
 }
 @media screen and (min-width: 768px) {
   .register {
-    grid-template-columns: 40% 50% 10%;
+    grid-template-columns: 40% 40% 20%;
     grid-template-rows: 10% 60% 30%;
     place-items: center;
   }
@@ -110,15 +107,14 @@
     grid-column: 2/3;
     grid-row: 2/3;
     font-size: 1.2rem;
-    grid-template-rows: 90px 90px 38px;
+    grid-template-rows: 90px 90px 90px 38px;
   }
   .register .registerForm input[type="text"],
   .register .registerForm input[type="password"] {
-    width: 75%;
+    width: 50%;
     font-size: 1.2rem;
   }
   .register .registerForm .registerButton button {
     font-size: 1.2rem;
-    margin-left: 120px;
   }
 }
