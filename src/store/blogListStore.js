@@ -14,6 +14,10 @@ class BlogListStore {
     });
     return this.blogList;
   };
+
+  deleteBlog = async (id) => {
+    await axios.delete(`${URL}/${id}`);
+  };
 }
 
 export default BlogListStore;
