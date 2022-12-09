@@ -1,11 +1,9 @@
-import React, { useMemo } from "react";
+import React from "react";
 import "./paging.css";
 function Paging(props) {
   const { currentPage, pageSize, totalNumber, getPaging } = props;
 
-  const totalPage = useMemo(() => {
-    return Math.ceil(totalNumber / pageSize);
-  }, [pageSize, totalNumber]);
+  const totalPage = Math.ceil(totalNumber / pageSize);
 
   const changePage = (index) => {
     if (currentPage === 1 && index === -1) {
