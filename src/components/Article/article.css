@@ -19,12 +19,7 @@
 .article .article_table {
   width: 90%;
   height: 200px;
-  border-collapse: collapse;
   text-align: center;
-}
-.article .article_table td,
-.article .article_table th {
-  border: 1px solid #666666;
 }
 
 .article .article_table thead th {
