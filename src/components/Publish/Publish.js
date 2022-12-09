@@ -7,12 +7,7 @@ function Publish() {
   const [editor, setEditor] = useState(null);
 
   const [html, setHtml] = useState("<p>hello</p>");
-  // 模拟 ajax 请求，异步设置 html
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setHtml("<p>hello world</p>");
-  //   }, 1500);
-  // }, []);
+
   const toolbarConfig = {};
   const editorConfig = {
     placeholder: "请输入内容...",
