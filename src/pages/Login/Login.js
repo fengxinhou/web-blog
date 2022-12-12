@@ -10,7 +10,7 @@ function Login() {
     password: "",
   });
   const { loginStore } = useStore();
-  const navigator = useNavigate();
+  const navigate = useNavigate();
   const onFormUpdate = (key, value) => {
     setNewUser({
       ...newUser,
@@ -19,25 +19,16 @@ function Login() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!newUser.name || !newUser.password) {
+    const { name, password } = newUser;
+    if (!name || !password) {
       alert("用户名或密码不为空");
     }
-
-    if (newUser.name && newUser.password) {
-      const res = await loginStore.login();
-      const data = res.find((item) => {
-        return item.name === newUser.name;
-      });
-      if (data === undefined) {
-        alert("用户不存在，请先进行注册");
-        setNewUser({ id: 0, name: "", password: "" });
-      } else {
-        if (data.name === newUser.name && data.password === newUser.password) {
-          navigator("/");
-        } else {
-          alert("用户名或密码错误");
-        }
-      }
+    try {
+      await loginStore.getToken({ name, password });
+      alert("登录成功！");
+      navigate("/");
+    } catch (error) {
+      alert(error);
     }
   };
   return (

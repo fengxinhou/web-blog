@@ -1,13 +1,17 @@
 import { makeAutoObservable } from "mobx";
-import axios from "axios";
+import { http, setToken } from "../utils";
 
-const URL = "http://localhost:3000/user";
+const URL = "/register";
 class RegisterStore {
+  token = "";
   constructor() {
     makeAutoObservable(this);
   }
   register = async ({ name, password }) => {
-    await axios.post(URL, { name, password });
+    const res = await http.post(URL, { name, password });
+    this.token = res.JWT;
+    console.log("token", this.token);
+    setToken(this.token);
   };
 }
 

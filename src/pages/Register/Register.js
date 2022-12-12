@@ -8,7 +8,6 @@ function Register() {
     id: -1,
     name: "",
     password: "",
-    rePass: "",
   });
   const { registerStore } = useStore();
   const navigate = useNavigate();
@@ -20,16 +19,13 @@ function Register() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, password, rePass } = user;
+    const { name, password } = user;
     try {
-      if (password === rePass) {
-        await registerStore.register({ name, password });
-        navigate("/login");
-      } else {
-        alert("密码输入不一致");
-      }
-    } catch (e) {
-      alert("注册失败");
+      await registerStore.register({ name, password });
+      alert("注册成功！");
+      navigate("/login");
+    } catch (error) {
+      alert(error);
     }
   };
   return (
@@ -59,17 +55,7 @@ function Register() {
             }}
           />
         </label>
-        <label>
-          密&nbsp;&nbsp;&nbsp;码：
-          <input
-            type="password"
-            placeholder="请再次输入密码"
-            value={user.rePass}
-            onChange={(e) => {
-              onFormUpdate("password", e.target.value);
-            }}
-          />
-        </label>
+
         <div className="registerButton">
           <button type="submit">确定</button>
         </div>

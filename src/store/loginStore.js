@@ -1,12 +1,17 @@
 import { makeAutoObservable } from "mobx";
-import axios from "axios";
+import { getToken, http, setToken } from "../utils";
 
-const URL = "http://localhost:3000/user";
+const URL = "/login";
 class LoginStore {
+  token = getToken() || "";
   constructor() {
     makeAutoObservable(this);
   }
-  login = () => axios.get(URL).then((res) => res.data);
+  getToken = async ({ name, password }) => {
+    const res = await http.post(URL, { name, password });
+    this.token = res.JWT;
+    setToken(this.token);
+  };
 }
 
 export default LoginStore;
