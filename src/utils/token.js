@@ -1,7 +1,7 @@
 const key = "blog-key";
 
 const setToken = (token) => {
-  return window.localStorage.setItem(key, token);
+  return window.localStorage.setItem(key, JSON.stringify(token));
 };
 
 const getToken = () => {
