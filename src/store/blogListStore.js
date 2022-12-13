@@ -1,22 +1,20 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import axios from "axios";
+import { http } from "../utils";
 
-const URL = "http://localhost:3000/blogList";
+const URL = "/blog";
 class BlogListStore {
   blogList = [];
+  totalNumber = 0;
   constructor() {
     makeAutoObservable(this);
   }
   getBlogList = async () => {
-    const res = await axios.get(URL);
+    const res = await http.get(URL);
     runInAction(() => {
-      this.blogList = res.data;
+      this.blogList = res.result;
+      this.totalNumber = res.count;
     });
-    return this.blogList;
-  };
-
-  deleteBlog = async (id) => {
-    await axios.delete(`${URL}/${id}`);
+    return { blogList: this.blogList, totalNumber: this.totalNumber };
   };
 }
 

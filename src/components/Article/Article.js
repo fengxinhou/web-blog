@@ -5,7 +5,7 @@ import Paging from "../Paging/Paging";
 import { observer } from "mobx-react-lite";
 function Article() {
   const { blogListStore } = useStore();
-
+  const { blogList, totalNumber } = blogListStore;
   const [currentPage, setCurrentPage] = useState(1);
 
   const [searchType, setSearchType] = useState("title");
@@ -18,13 +18,13 @@ function Article() {
   const beginIndex = (currentPage - 1) * pageSize;
 
   const filterData = !searchData
-    ? blogListStore.blogList
-    : blogListStore.blogList.filter(
+    ? blogList
+    : blogList.filter(
         (item) => JSON.stringify(item[searchType]).indexOf(searchData) !== -1
       );
 
   const deleteArticle = (id) => {
-    blogListStore.blogList.splice(id, 1);
+    blogList.splice(id, 1);
     //调用删除接口
     //重新刷新列表
   };
@@ -52,7 +52,6 @@ function Article() {
         <thead>
           <tr>
             <th>标题</th>
-            <th>发布时间</th>
             <th>点赞数</th>
             <th>操作</th>
           </tr>
@@ -62,7 +61,6 @@ function Article() {
             return (
               <tr key={item.id}>
                 <td>{item.title}</td>
-                <td>{item.creationTime}</td>
                 <td>{item.thumbsUp}</td>
                 <td>
                   <div className="operator_button">
@@ -83,7 +81,7 @@ function Article() {
       <Paging
         currentPage={currentPage}
         pageSize={pageSize}
-        totalNumber={blogListStore.blogList.length}
+        totalNumber={totalNumber}
         getPaging={getPaging}
       />
     </div>

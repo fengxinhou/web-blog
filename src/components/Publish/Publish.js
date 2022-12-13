@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./publish.css";
 import { Link } from "react-router-dom";
 import { Editor, Toolbar } from "@wangeditor/editor-for-react";
+import { addArticle } from "../../server/api";
 function Publish() {
   const [articleTitle, setArticleTitle] = useState("");
   const [editor, setEditor] = useState(null);
@@ -20,10 +21,9 @@ function Publish() {
     };
   }, [editor]);
 
-  const handlePublishArticle = (e) => {
+  const handlePublishArticle = async (e) => {
     e.preventDefault();
-    //获取到文章的title And html
-    console.log(articleTitle, html);
+    await addArticle(articleTitle, html);
   };
   return (
     <div className="publish">
