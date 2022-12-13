@@ -12,7 +12,9 @@ function Detail() {
     //发送请求，修改点赞数
     console.log(article.thumbUp);
   };
-  return (
+  return !article ? (
+    <>Loading...</>
+  ) : (
     <div className="detail">
       {
         <>

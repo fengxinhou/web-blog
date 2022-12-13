@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./publish.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Editor, Toolbar } from "@wangeditor/editor-for-react";
-import { addArticle } from "../../server/api";
+import { addArticle, updateArticle } from "../../server/api";
+import { useStore } from "../../store";
+import { observer } from "mobx-react-lite";
+import { http } from "../../utils";
 function Publish() {
+  const { articleStore } = useStore();
+  const navigate = useNavigate();
   const [articleTitle, setArticleTitle] = useState("");
   const [editor, setEditor] = useState(null);
 
@@ -21,15 +26,34 @@ function Publish() {
     };
   }, [editor]);
 
+  const [params] = useSearchParams();
+  const id = params.get("id");
+
+  useEffect(() => {
+    const loaDetail = async () => {
+      const res = await articleStore.getArticleDetail(id);
+      setArticleTitle(res.title);
+      setHtml(res.description);
+    };
+    if (id) {
+      loaDetail().then();
+    }
+  }, [articleStore, id]);
+
   const handlePublishArticle = async (e) => {
     e.preventDefault();
-    try {
+    console.log(articleTitle, html);
+    if (id) {
+      // await updateArticle(id, articleTitle, html);
+      await http.put(`/blog/${id}`, { id, articleTitle, html });
+      alert("更新成功!");
+      navigate("/article");
+    } else {
       await addArticle(articleTitle, html);
       alert("发布成功！");
       setArticleTitle("");
       setHtml("");
-    } catch (error) {
-      alert(error);
+      navigate("/article");
     }
   };
   return (
@@ -72,7 +96,7 @@ function Publish() {
           </div>
           <div className="article_button">
             <button type="submit">
-              <span>发布文章</span>
+              <span>{id ? "更新" : "发布"}文章</span>
             </button>
           </div>
         </form>
@@ -81,4 +105,4 @@ function Publish() {
   );
 }
 
-export default Publish;
+export default observer(Publish);

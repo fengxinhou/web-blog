@@ -4,9 +4,11 @@ import { useStore } from "../../store";
 import Paging from "../Paging/Paging";
 import { observer } from "mobx-react-lite";
 import { deleteArticle } from "../../server/api";
+import { useNavigate } from "react-router-dom";
 function Article() {
   const { blogListStore } = useStore();
   const { blogList, totalNumber } = blogListStore;
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
 
   const [searchType, setSearchType] = useState("title");
@@ -31,6 +33,10 @@ function Article() {
     } catch (error) {
       alert(error);
     }
+  };
+
+  const handleClickEdit = async (values) => {
+    navigate(`/publish?id=${values.id}`);
   };
 
   return (
@@ -68,7 +74,12 @@ function Article() {
                 <td>{item.thumbUp}</td>
                 <td>
                   <div className="operator_button">
-                    <button className="edit">编辑</button>
+                    <button
+                      className="edit"
+                      onClick={() => handleClickEdit(item)}
+                    >
+                      编辑
+                    </button>
                     <button
                       className="danger"
                       onClick={() => handleClickDelete(item.id)}
