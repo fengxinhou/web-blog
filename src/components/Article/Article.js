@@ -3,6 +3,7 @@ import "./article.css";
 import { useStore } from "../../store";
 import Paging from "../Paging/Paging";
 import { observer } from "mobx-react-lite";
+import { deleteArticle } from "../../server/api";
 function Article() {
   const { blogListStore } = useStore();
   const { blogList, totalNumber } = blogListStore;
@@ -23,10 +24,13 @@ function Article() {
         (item) => JSON.stringify(item[searchType]).indexOf(searchData) !== -1
       );
 
-  const deleteArticle = (id) => {
-    blogList.splice(id, 1);
-    //调用删除接口
-    //重新刷新列表
+  const handleClickDelete = async (id) => {
+    try {
+      await deleteArticle(id);
+      alert("删除成功！");
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
@@ -61,13 +65,13 @@ function Article() {
             return (
               <tr key={item.id}>
                 <td>{item.title}</td>
-                <td>{item.thumbsUp}</td>
+                <td>{item.thumbUp}</td>
                 <td>
                   <div className="operator_button">
                     <button className="edit">编辑</button>
                     <button
                       className="danger"
-                      onClick={() => deleteArticle(item.id)}
+                      onClick={() => handleClickDelete(item.id)}
                     >
                       删除
                     </button>

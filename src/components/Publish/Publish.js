@@ -23,7 +23,14 @@ function Publish() {
 
   const handlePublishArticle = async (e) => {
     e.preventDefault();
-    await addArticle(articleTitle, html);
+    try {
+      await addArticle(articleTitle, html);
+      alert("发布成功！");
+      setArticleTitle("");
+      setHtml("");
+    } catch (error) {
+      alert(error);
+    }
   };
   return (
     <div className="publish">

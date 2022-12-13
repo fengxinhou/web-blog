@@ -11,3 +11,6 @@ export const updateArticle = (id, editArticleTitle, editArticleContent) =>
     title: editArticleTitle,
     content: editArticleContent,
   });
+
+export const giveThumbUp = (id) =>
+  http.post("/thumb-up", { id }).then((res) => res.thumbUp);

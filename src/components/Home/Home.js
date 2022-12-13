@@ -4,8 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useStore } from "../../store";
 import { observer } from "mobx-react-lite";
 import Paging from "../Paging/Paging";
+import { giveThumbUp } from "../../server/api";
 function Home() {
-  const { blogListStore } = useStore();
+  const { blogListStore, articleStore } = useStore();
+  const { blogList, totalNumber } = blogListStore;
+
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 4;
@@ -14,9 +17,20 @@ function Home() {
     setCurrentPage(page);
   };
   const beginIndex = (currentPage - 1) * pageSize;
-  const getArticleDetail = () => {
-    navigate("./detail");
+  const getArticleDetail = (id) => {
+    try {
+      articleStore.getArticleDetail(id).then();
+      alert("即将跳转至页面详情页，请点击确认");
+      navigate("./detail");
+    } catch (error) {
+      alert(error);
+    }
   };
+
+  const handleClickThumb = (id) => {
+    giveThumbUp(id).then();
+  };
+
   return (
     <div className="home">
       <div className="home_header">
@@ -26,30 +40,34 @@ function Home() {
       </div>
       <div className="home_content">
         <ol className="article_list">
-          {blogListStore.blogList
-            .slice(beginIndex, beginIndex + pageSize)
-            .map((item) => (
-              <li className="article_item" key={item.id}>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <div className="article_operator">
-                  <time>{item.creationTime}</time>
-                  <div className="thumbs">
-                    <i className="iconfont">&#xe65d;</i>
-                    <span>点赞数:&nbsp;{item.thumbsUp}</span>
-                  </div>
-                  <button className="continue" onClick={getArticleDetail}>
-                    继续阅读
-                  </button>
+          {blogList.slice(beginIndex, beginIndex + pageSize).map((item) => (
+            <li className="article_item" key={item.id}>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              <div className="article_operator">
+                <span>作者：{item.auther.name}</span>
+                <div
+                  className="thumbs"
+                  onClick={() => handleClickThumb(item.id)}
+                >
+                  <i className="iconfont">&#xe65d;</i>
+                  <button>点赞数:&nbsp;{item.thumbUp}</button>
                 </div>
-                <hr className="article_divide" />
-              </li>
-            ))}
+                <button
+                  className="continue"
+                  onClick={() => getArticleDetail(item.id)}
+                >
+                  继续阅读
+                </button>
+              </div>
+              <hr className="article_divide" />
+            </li>
+          ))}
         </ol>
         <Paging
           currentPage={currentPage}
           pageSize={pageSize}
-          totalNumber={blogListStore.blogList.length}
+          totalNumber={totalNumber}
           getPaging={getPaging}
         />
       </div>

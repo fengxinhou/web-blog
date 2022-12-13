@@ -9,7 +9,7 @@ class ArticleStore {
   getArticleDetail = async (id) => {
     const res = await http.get(`/blog/${id}`);
     runInAction(() => {
-      this.article = res.data;
+      this.article = res;
     });
     return this.article;
   };
