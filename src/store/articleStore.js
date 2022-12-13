@@ -1,14 +1,13 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import axios from "axios";
+import { http } from "../utils";
 
-const URL = "http://localhost:3000/article";
 class ArticleStore {
   article = {};
   constructor() {
     makeAutoObservable(this);
   }
-  getArticleDetail = async () => {
-    const res = await axios.get(URL);
+  getArticleDetail = async (id) => {
+    const res = await http.get(`/blog/${id}`);
     runInAction(() => {
       this.article = res.data;
     });
