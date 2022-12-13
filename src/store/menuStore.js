@@ -1,18 +1,27 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import axios from "axios";
-
-const URL = "http://localhost:3000/menu";
+import { getToken } from "../utils";
 class MenuStore {
-  menu = [];
+  menuList = [];
+  token = getToken();
   constructor() {
     makeAutoObservable(this);
   }
-  getMenu = async () => {
-    const res = await axios.get(URL);
+  getMenuList = async () => {
+    const base64Url = this.token.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    const jsonPayload = decodeURIComponent(
+      window
+        .atob(base64)
+        .split("")
+        .map(function (c) {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
     runInAction(() => {
-      this.menu = res.data;
+      this.menuList = JSON.parse(jsonPayload).permission;
     });
-    return this.menu;
+    return this.menuList;
   };
 }
 
