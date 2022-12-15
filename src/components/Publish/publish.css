@@ -2,7 +2,6 @@
   color: black;
   font-size: 0.8rem;
 }
-
 .publish .publish_header {
   padding: 10px;
   display: flex;
@@ -20,6 +19,17 @@
   width: 60%;
   height: 28px;
 }
+
+.publish #div1 {
+  padding: 0 20px 20px;
+  background: #fff;
+  border: 1px solid red;
+}
+.publish #div1 .w-e-text {
+  border: 1px solid blue;
+  overflow-y: auto;
+}
+
 .publish .article_button button {
   cursor: pointer;
   font-weight: 700;

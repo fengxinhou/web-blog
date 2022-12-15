@@ -18,7 +18,7 @@
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
-    "wangeditor": "^4.7.15",
+    "wangeditor": "^4.7.12",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

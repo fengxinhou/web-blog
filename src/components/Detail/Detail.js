@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./detail.css";
 import moment from "moment";
 import { http } from "../../utils";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 function Detail() {
   const [articleDetail, setArticleDetail] = useState({
@@ -34,10 +34,12 @@ function Detail() {
     loadArticle().then();
   }, [id]);
 
-  const GiveThumbs = () => {
-    articleDetail.thumbUp = articleDetail.thumbUp + 1;
-    //发送请求，修改点赞数
+  const GiveThumbs = (id) => {
     console.log(articleDetail.thumbUp);
+    setArticleDetail({
+      ...articleDetail,
+      thumbUp: articleDetail.thumbUp + 1,
+    });
   };
   return (
     <div className="detail">
@@ -57,14 +59,16 @@ function Detail() {
           </section>
           <div className="detail_remark">
             <span>作者：{articleDetail.auther.name}</span>
-            <div className="thumbs" onClick={GiveThumbs}>
+            <div
+              className="thumbs"
+              onClick={() => GiveThumbs(articleDetail.id)}
+            >
               <i className="iconfont">&#xe65d;</i>
               <span>点赞{articleDetail.thumbUp}</span>
             </div>
           </div>
-          <footer className="switch_article">
-            <button>上一篇</button>
-            <button>下一篇</button>
+          <footer>
+            <Link to={"/"}>返回首页</Link>
           </footer>
         </>
       }
