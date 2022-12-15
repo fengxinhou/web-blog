@@ -22,10 +22,11 @@
   width: 100%;
   list-style-type: none;
   text-align: left;
+  display: grid;
+  grid-template-rows: 25% 25% 25% 25%;
 }
 .home .home_content .article_list .article_item {
   margin: 0 15px 10px 15px;
-  height: 14%;
   background-color: white;
 }
 .home .home_content .article_list .article_item h3 {
@@ -35,6 +36,7 @@
   line-height: 30px;
 }
 .home .home_content .article_list .article_item p {
+  height: 100px;
   color: #999;
   font-size: 0.8rem;
   margin-top: 5px;

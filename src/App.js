@@ -7,14 +7,13 @@ import {
 import { history } from "./utils";
 import { lazy, Suspense } from "react";
 import Detail from "./components/Detail/Detail";
-import { observer } from "mobx-react-lite";
 
 const Login = lazy(() => import("./pages/Login/Login"));
 const Register = lazy(() => import("./pages/Register/Register"));
 const Frame = lazy(() => import("./pages/Frame/Frame"));
 const Home = lazy(() => import("./components/Home/Home"));
 const Article = lazy(() => import("./components/Article/Article"));
-const Publish = lazy(() => import("./components/Publish/Publish"));
+const Publish = lazy(() => import("./components/Publish/publish"));
 
 function App() {
   return (
@@ -48,4 +47,4 @@ function App() {
   );
 }
 
-export default observer(App);
+export default App;

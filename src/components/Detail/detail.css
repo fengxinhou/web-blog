@@ -20,6 +20,8 @@
 .detail .detail_content {
   margin: 0 auto;
   width: 95%;
+  height: 600px;
+  font-size: 0.8rem;
 }
 .detail .detail_remark {
   width: 90%;
@@ -57,5 +59,9 @@
   }
   .detail .detail_remark i {
     font-size: 1.3rem;
+  }
+  .detail .detail_content {
+    height: 400px;
+    font-size: 1rem;
   }
 }

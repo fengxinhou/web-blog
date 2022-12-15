@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./article.css";
 import Paging from "../Paging/Paging";
-import { observer } from "mobx-react-lite";
 import { deleteArticle } from "../../server/api";
 import { useNavigate } from "react-router-dom";
 import { http } from "../../utils";
@@ -127,4 +126,4 @@ function Article() {
   );
 }
 
-export default observer(Article);
+export default Article;

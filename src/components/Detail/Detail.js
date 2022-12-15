@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./detail.css";
-import { observer } from "mobx-react-lite";
 import moment from "moment";
 import { http } from "../../utils";
 import { useSearchParams } from "react-router-dom";
@@ -33,7 +32,7 @@ function Detail() {
       });
     };
     loadArticle().then();
-  });
+  }, [id]);
 
   const GiveThumbs = () => {
     articleDetail.thumbUp = articleDetail.thumbUp + 1;
@@ -58,7 +57,7 @@ function Detail() {
           </section>
           <div className="detail_remark">
             <span>作者：{articleDetail.auther.name}</span>
-            <div className="thumbs" type="button" onClick={GiveThumbs}>
+            <div className="thumbs" onClick={GiveThumbs}>
               <i className="iconfont">&#xe65d;</i>
               <span>点赞{articleDetail.thumbUp}</span>
             </div>
@@ -73,4 +72,4 @@ function Detail() {
   );
 }
 
-export default observer(Detail);
+export default Detail;

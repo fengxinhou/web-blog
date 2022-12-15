@@ -3,6 +3,7 @@ import registerImg from "../../assets/img/login-pic.svg";
 import "./register.css";
 import { useStore } from "../../store";
 import { useNavigate } from "react-router-dom";
+import { observer } from "mobx-react-lite";
 function Register() {
   const [user, setUser] = useState({
     id: -1,
@@ -64,4 +65,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default observer(Register);
