@@ -1,31 +1,26 @@
 import React, { useEffect, useState } from "react";
 import "./publish.css";
-import {
-  Link,
-  useLocation,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import E from "wangeditor";
 import { addArticle, updateArticle } from "../../server/api";
 import { http } from "../../utils";
 
 let editor = null;
+
 function Publish() {
   const [content, setContent] = useState("");
   const [articleTitle, setArticleTitle] = useState("");
 
-  const location = useLocation();
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const id = params.get("id");
+
   useEffect(() => {
     editor = new E("#div1");
     editor.config.onchange = (newHtml) => {
       setContent(newHtml);
     };
     editor.create();
-
     const loaDetail = async () => {
       const res = await http.get(`/blog/${id}`);
       const { title, description } = res;
@@ -38,7 +33,7 @@ function Publish() {
     return () => {
       editor.destroy();
     };
-  }, [id, location.pathname]);
+  }, [id, content]);
 
   const handleClickSubmit = async () => {
     if (id) {
@@ -71,13 +66,7 @@ function Publish() {
           />
         </label>
       </div>
-      <div
-        id="div1"
-        style={{
-          padding: "0 20px 20px",
-          background: "#fff",
-        }}
-      ></div>
+      <div id="div1"></div>
       <div className="article_button">
         <button onClick={handleClickSubmit}>
           <span>{id ? "更新" : "发布"}文章</span>
