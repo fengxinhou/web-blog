@@ -1,28 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./article.css";
-import { useStore } from "../../store";
 import Paging from "../Paging/Paging";
 import { observer } from "mobx-react-lite";
 import { deleteArticle } from "../../server/api";
 import { useNavigate } from "react-router-dom";
+import { http } from "../../utils";
 function Article() {
-  const { blogListStore } = useStore();
-  const { blogList, totalNumber } = blogListStore;
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState(1);
+  const [articleData, setArticleData] = useState({
+    blogList: [],
+    totalCount: 0,
+  });
+  const [params, setParams] = useState({
+    page: 1,
+    pageSize: 10,
+  });
 
   const [searchType, setSearchType] = useState("title");
   const [searchData, setSearchData] = useState("");
-  const pageSize = 10;
 
+  useEffect(() => {
+    const loadList = async () => {
+      const res = await http.get("/blog", { params });
+      const { result, count } = res;
+      setArticleData({
+        blogList: result,
+        totalCount: count,
+      });
+    };
+    loadList().then();
+  }, [params]);
+
+  const beginIndex = (params.page - 1) * params.pageSize;
   const getPaging = (page) => {
-    setCurrentPage(page);
+    setParams({
+      ...params,
+      page,
+    });
   };
-  const beginIndex = (currentPage - 1) * pageSize;
-
   const filterData = !searchData
-    ? blogList
-    : blogList.filter(
+    ? articleData.blogList
+    : articleData.blogList.filter(
         (item) => JSON.stringify(item[searchType]).indexOf(searchData) !== -1
       );
 
@@ -30,6 +48,10 @@ function Article() {
     try {
       await deleteArticle(id);
       alert("删除成功！");
+      setParams({
+        ...params,
+        page: 1,
+      });
     } catch (error) {
       alert(error);
     }
@@ -67,36 +89,38 @@ function Article() {
           </tr>
         </thead>
         <tbody>
-          {filterData.slice(beginIndex, beginIndex + pageSize).map((item) => {
-            return (
-              <tr key={item.id}>
-                <td>{item.title}</td>
-                <td>{item.thumbUp}</td>
-                <td>
-                  <div className="operator_button">
-                    <button
-                      className="edit"
-                      onClick={() => handleClickEdit(item)}
-                    >
-                      编辑
-                    </button>
-                    <button
-                      className="danger"
-                      onClick={() => handleClickDelete(item.id)}
-                    >
-                      删除
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            );
-          })}
+          {filterData
+            .slice(beginIndex, beginIndex + params.pageSize)
+            .map((item) => {
+              return (
+                <tr key={item.id}>
+                  <td>{item.title}</td>
+                  <td>{item.thumbUp}</td>
+                  <td>
+                    <div className="operator_button">
+                      <button
+                        className="edit"
+                        onClick={() => handleClickEdit(item)}
+                      >
+                        编辑
+                      </button>
+                      <button
+                        className="danger"
+                        onClick={() => handleClickDelete(item.id)}
+                      >
+                        删除
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
       <Paging
-        currentPage={currentPage}
-        pageSize={pageSize}
-        totalNumber={totalNumber}
+        currentPage={params.page}
+        pageSize={params.pageSize}
+        totalNumber={articleData.totalCount}
         getPaging={getPaging}
       />
     </div>

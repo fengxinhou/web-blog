@@ -9,7 +9,6 @@ function Frame() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    blogListStore.getBlogList().then();
     menuStore.getMenuList().then();
   }, [menuStore, blogListStore]);
 

@@ -3,11 +3,9 @@ import "./publish.css";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Editor, Toolbar } from "@wangeditor/editor-for-react";
 import { addArticle, updateArticle } from "../../server/api";
-import { useStore } from "../../store";
 import { observer } from "mobx-react-lite";
 import { http } from "../../utils";
 function Publish() {
-  const { articleStore } = useStore();
   const navigate = useNavigate();
   const [articleTitle, setArticleTitle] = useState("");
   const [editor, setEditor] = useState(null);
@@ -31,21 +29,22 @@ function Publish() {
 
   useEffect(() => {
     const loaDetail = async () => {
-      const res = await articleStore.getArticleDetail(id);
-      setArticleTitle(res.title);
-      setHtml(res.description);
+      const res = await http.get(`/blog/${id}`);
+      const { title, description } = res;
+      setArticleTitle(title);
+      setHtml(description);
     };
     if (id) {
       loaDetail().then();
     }
-  }, [articleStore, id]);
+  }, [id]);
 
   const handlePublishArticle = async (e) => {
     e.preventDefault();
     console.log(articleTitle, html);
     if (id) {
-      // await updateArticle(id, articleTitle, html);
-      await http.put(`/blog/${id}`, { id, articleTitle, html });
+      await updateArticle(id, articleTitle, html);
+      // await http.put(`/blog/${id}`, { id, articleTitle, html });
       alert("更新成功!");
       navigate("/article");
     } else {
