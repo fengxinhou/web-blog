@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./home.css";
 import { Link, useNavigate } from "react-router-dom";
-import { observer } from "mobx-react-lite";
 import Paging from "../Paging/Paging";
 import { giveThumbUp } from "../../server/api";
 import { http } from "../../utils";
@@ -10,6 +9,7 @@ function Home() {
     blogList: [],
     totalNumber: 0,
   });
+
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 4;
@@ -24,7 +24,7 @@ function Home() {
       });
     };
     loadList().then();
-  });
+  }, []);
 
   const getPaging = (page) => {
     setCurrentPage(page);
@@ -39,8 +39,21 @@ function Home() {
     }
   };
 
-  const handleClickThumb = (id) => {
-    giveThumbUp(id).then();
+  const handleClickThumb = async (id) => {
+    const thumbUpCount = await giveThumbUp(id);
+    const modifyBolgThumb = blog.blogList.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          thumbUp: thumbUpCount,
+        };
+      }
+      return item;
+    });
+    setBlog({
+      ...blog,
+      blogList: modifyBolgThumb,
+    });
   };
 
   return (
@@ -89,4 +102,4 @@ function Home() {
   );
 }
 
-export default observer(Home);
+export default Home;

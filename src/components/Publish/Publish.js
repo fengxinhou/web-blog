@@ -1,107 +1,90 @@
 import React, { useEffect, useState } from "react";
 import "./publish.css";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { Editor, Toolbar } from "@wangeditor/editor-for-react";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
+import E from "wangeditor";
 import { addArticle, updateArticle } from "../../server/api";
-import { observer } from "mobx-react-lite";
 import { http } from "../../utils";
+
+let editor = null;
 function Publish() {
-  const navigate = useNavigate();
+  const [content, setContent] = useState("");
   const [articleTitle, setArticleTitle] = useState("");
-  const [editor, setEditor] = useState(null);
 
-  const [html, setHtml] = useState("<p>hello</p>");
-
-  const toolbarConfig = {};
-  const editorConfig = {
-    placeholder: "请输入内容...",
-  };
-  useEffect(() => {
-    return () => {
-      if (editor == null) return;
-      editor.destroy();
-      setEditor(null);
-    };
-  }, [editor]);
-
+  const location = useLocation();
+  const navigate = useNavigate();
   const [params] = useSearchParams();
   const id = params.get("id");
-
   useEffect(() => {
+    editor = new E("#div1");
+    editor.config.onchange = (newHtml) => {
+      setContent(newHtml);
+    };
+    editor.create();
+
     const loaDetail = async () => {
       const res = await http.get(`/blog/${id}`);
       const { title, description } = res;
       setArticleTitle(title);
-      setHtml(description);
+      editor.txt.html(description);
     };
     if (id) {
       loaDetail().then();
     }
-  }, [id]);
+    return () => {
+      editor.destroy();
+    };
+  }, [id, location.pathname]);
 
-  const handlePublishArticle = async (e) => {
-    e.preventDefault();
-    console.log(articleTitle, html);
+  const handleClickSubmit = async () => {
     if (id) {
-      await updateArticle(id, articleTitle, html);
-      // await http.put(`/blog/${id}`, { id, articleTitle, html });
-      alert("更新成功!");
-      navigate("/article");
+      await updateArticle(id, articleTitle, content);
     } else {
-      await addArticle(articleTitle, html);
-      alert("发布成功！");
+      await addArticle(articleTitle, content);
       setArticleTitle("");
-      setHtml("");
-      navigate("/article");
+      setContent("");
     }
+    alert(`${id ? "更新成功" : "发布成功"}`);
+    navigate("/article");
   };
   return (
     <div className="publish">
-      <div className="publish_content">
-        <div className="publish_header">
-          <Link to={"/"}>首页</Link>
-          &nbsp;>&nbsp;
-          <span>发布文章</span>
-        </div>
-        <form onSubmit={handlePublishArticle} className="publish_form">
-          <div className="article_title">
-            <label>
-              标题：
-              <input
-                type="text"
-                placeholder="请输入文章标题"
-                value={articleTitle}
-                onChange={(e) => {
-                  setArticleTitle(e.target.value);
-                }}
-              />
-            </label>
-          </div>
-          <div className="article_content">
-            <Toolbar
-              className="toolbar"
-              editor={editor}
-              defaultConfig={toolbarConfig}
-              mode="default"
-            />
-            <Editor
-              className="editor"
-              defaultConfig={editorConfig}
-              value={html}
-              onCreated={setEditor}
-              onChange={(editor) => setHtml(editor.getHtml())}
-              mode="default"
-            />
-          </div>
-          <div className="article_button">
-            <button type="submit">
-              <span>{id ? "更新" : "发布"}文章</span>
-            </button>
-          </div>
-        </form>
+      <div className="publish_header">
+        <Link to={"/"}>首页</Link>
+        &nbsp;>&nbsp;
+        <span>发布文章</span>
+      </div>
+      <div className="article_title">
+        <label>
+          标题：
+          <input
+            type="text"
+            placeholder="请输入文章标题"
+            value={articleTitle}
+            onChange={(e) => {
+              setArticleTitle(e.target.value);
+            }}
+          />
+        </label>
+      </div>
+      <div
+        id="div1"
+        style={{
+          padding: "0 20px 20px",
+          background: "#fff",
+        }}
+      ></div>
+      <div className="article_button">
+        <button onClick={handleClickSubmit}>
+          <span>{id ? "更新" : "发布"}文章</span>
+        </button>
       </div>
     </div>
   );
 }
 
-export default observer(Publish);
+export default Publish;

@@ -2,50 +2,25 @@
   color: black;
   font-size: 0.8rem;
 }
-.publish .publish_content {
-  width: 100%;
-}
-.publish .publish_content .publish_header {
+
+.publish .publish_header {
   padding: 10px;
   display: flex;
   box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.2);
 }
-.publish .publish_content .publish_header a {
-  text-decoration: none;
-  float: left;
-  margin-left: 10px;
+.publish .article_title {
+  height: 60px;
+  padding: 10px 20px 20px;
+  text-align: left;
 }
-.publish .publish_content .publish_form {
-  width: 90%;
-  margin: 20px auto;
-}
-.publish .publish_content .publish_form .article_title {
-  margin: 0 auto;
-  height: 50px;
-}
-.publish .publish_content .publish_form label {
+.publish .article_title label {
   margin-right: 5px;
 }
-.publish .publish_content .publish_form input[type="text"] {
+.publish .article_title input[type="text"] {
   width: 60%;
   height: 28px;
 }
-
-.publish .publish_content .publish_form .article_content {
-  width: 100%;
-  border: 1px solid #ccc;
-  height: 600px;
-  margin-bottom: 10px;
-}
-
-.publish .publish_content .publish_form .article_content .toolbar {
-  border-bottom: 1px solid #ccc;
-}
-.publish .publish_content .publish_form .article_content .editor {
-  height: 300px;
-  overflow-y: hidden;
-}
-.publish .publish_content .publish_form .article_button button {
+.publish .article_button button {
   cursor: pointer;
   font-weight: 700;
   color: #fff;
@@ -56,11 +31,11 @@
   position: relative;
   transition: 0.3s ease-in-out;
 }
-.publish .publish_content .publish_form .article_button button span {
+.publish .article_button button span {
   z-index: 1;
   position: relative;
 }
-.publish .publish_content .publish_form .article_button button::before {
+.publish .article_button button::before {
   content: "";
   width: 0;
   height: 100%;
@@ -71,46 +46,18 @@
   z-index: 0;
   transition: 0.3s ease-in-out;
 }
-.publish .publish_content .publish_form .article_button button:hover {
+.publish .article_button button:hover {
   color: #fff;
 }
 .publish .publish_content .publish_form .article_button button:hover::before {
   width: 100%;
 }
+
 @media screen and (min-width: 768px) {
   .publish {
     font-size: 1rem;
   }
-  .publish .publish_content .publish_form .article_title {
-    height: 50px;
-  }
-
-  .publish .publish_content .publish_form input[type="text"] {
-    margin-left: 20px;
-  }
-  .publish .publish_content .publish_form .article_content {
-    margin: 10px auto;
-    width: 71%;
-    height: 500px;
-  }
-  .publish .publish_content .publish_form .article_content .toolbar {
-    height: 33%;
-  }
-  .publish .publish_content .publish_form .article_content .editor {
-    height: 330px;
-  }
-  .publish .publish_content .publish_form .article_button button {
-    margin-top: 20px;
+  .publish .article_button button {
     font-size: 1rem;
-  }
-}
-@media screen and (min-width: 975px) {
-  .publish .publish_content .publish_form .article_content .toolbar {
-    height: 25%;
-  }
-}
-@media screen and (min-width: 1368px) {
-  .publish .publish_content .publish_form .article_content .toolbar {
-    height: 20%;
   }
 }
