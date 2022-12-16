@@ -7,11 +7,9 @@ function Paging(props) {
 
   const changePage = (index) => {
     if (currentPage === 1 && index === -1) {
-      alert("当前为首页");
       return;
     }
     if (currentPage === totalPage && index === 1) {
-      alert("当前为最后一页");
       return;
     }
     getPaging(Number(currentPage + index));

@@ -46,7 +46,6 @@ function Article() {
   const handleClickDelete = async (id) => {
     try {
       await deleteArticle(id);
-      alert("删除成功！");
       setParams({
         ...params,
         page: 1,

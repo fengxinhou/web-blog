@@ -23,10 +23,10 @@ function Login() {
     const { name, password } = newUser;
     if (!name || !password) {
       alert("用户名或密码不为空");
+      //进行报错处理
     }
     try {
       await loginStore.getToken({ name, password });
-      alert("登录成功！");
       navigate("/");
     } catch (error) {
       alert(error);

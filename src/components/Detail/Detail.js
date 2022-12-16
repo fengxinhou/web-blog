@@ -8,7 +8,7 @@ function Detail() {
   const [articleDetail, setArticleDetail] = useState({
     id: "",
     title: "",
-    description: "",
+    content: "",
     auther: {
       name: "",
       password: "",
@@ -21,12 +21,12 @@ function Detail() {
   useEffect(() => {
     const loadArticle = async () => {
       const res = await http.get(`/blog/${id}`);
-      const { title, auther, description, thumbUp, createTime } = res;
+      const { title, auther, content, thumbUp, createTime } = res;
       setArticleDetail({
         id: id,
         title,
         auther,
-        description,
+        content,
         thumbUp,
         createTime,
       });
@@ -54,9 +54,7 @@ function Detail() {
             </div>
             <h1 className="detail_title">{articleDetail.title}</h1>
           </div>
-          <section className="detail_content">
-            {articleDetail.description}
-          </section>
+          <section className="detail_content">{articleDetail.content}</section>
           <div className="detail_remark">
             <span>作者：{articleDetail.auther.name}</span>
             <div

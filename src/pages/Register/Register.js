@@ -23,7 +23,6 @@ function Register() {
     const { name, password } = user;
     try {
       await registerStore.register({ name, password });
-      alert("注册成功！");
       navigate("/login");
     } catch (error) {
       alert(error);

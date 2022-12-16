@@ -32,7 +32,6 @@ function Home() {
   const beginIndex = (currentPage - 1) * pageSize;
   const getArticleDetail = (id) => {
     try {
-      alert("即将跳转至页面详情页，请点击确认");
       navigate(`/detail?id=${id}`);
     } catch (error) {
       alert(error);
