@@ -33,7 +33,7 @@ function Publish() {
     return () => {
       editor.destroy();
     };
-  }, [id, content]);
+  }, [id]);
 
   const handleClickSubmit = async () => {
     if (id) {

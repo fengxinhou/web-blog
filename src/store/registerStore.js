@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import { http, setToken } from "../utils";
 
 const URL = "/register";
@@ -9,8 +9,9 @@ class RegisterStore {
   }
   register = async ({ name, password }) => {
     const res = await http.post(URL, { name, password });
-    this.token = res.JWT;
-    console.log("token", this.token);
+    runInAction(() => {
+      this.token = res.JWT;
+    });
     setToken(this.token);
   };
 }
