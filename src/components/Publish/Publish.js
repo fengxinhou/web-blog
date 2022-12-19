@@ -23,9 +23,9 @@ function Publish() {
     editor.create();
     const loaDetail = async () => {
       const res = await http.get(`/blog/${id}`);
-      const { title, description } = res;
+      const { title, content } = res;
       setArticleTitle(title);
-      editor.txt.html(description);
+      editor.txt.html(content);
     };
     if (id) {
       loaDetail().then();
@@ -43,7 +43,6 @@ function Publish() {
       setArticleTitle("");
       setContent("");
     }
-    alert(`${id ? "更新成功" : "发布成功"}`);
     navigate("/article");
   };
   return (
@@ -51,7 +50,7 @@ function Publish() {
       <div className="publish_header">
         <Link to={"/"}>首页</Link>
         &nbsp;>&nbsp;
-        <span>发布文章</span>
+        <span>{id ? "更新" : "发布"}文章</span>
       </div>
       <div className="article_title">
         <label>

@@ -4,15 +4,21 @@
   margin: 10px auto;
   width: 90%;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  overflow-y: auto;
 }
 .detail .detail_header {
-  padding: 15px 0 0 15px;
+  padding: 15px 15px 0 15px;
   height: 100px;
 }
 
 .detail .detail_meta {
   margin: 0 0 15px 0;
   color: #c7c7c7;
+  display: flex;
+  justify-content: space-between;
 }
 .detail .detail_meta span {
   margin-right: 10px;
@@ -20,7 +26,6 @@
 .detail .detail_content {
   margin: 10px auto;
   width: 95%;
-  height: 600px;
   font-size: 0.8rem;
 }
 .detail .detail_remark {
@@ -62,7 +67,6 @@
     font-size: 1.3rem;
   }
   .detail .detail_content {
-    height: 400px;
     font-size: 1rem;
   }
   .detail a {

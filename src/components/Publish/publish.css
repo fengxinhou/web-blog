@@ -23,10 +23,8 @@
 .publish #div1 {
   padding: 0 20px 20px;
   background: #fff;
-  border: 1px solid red;
 }
 .publish #div1 .w-e-text {
-  border: 1px solid blue;
   overflow-y: auto;
 }
 

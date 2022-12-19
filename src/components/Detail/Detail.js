@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from "react";
 import "./detail.css";
-import moment from "moment";
 import { http } from "../../utils";
 import { Link, useSearchParams } from "react-router-dom";
+import moment from "moment";
 
 function Detail() {
   const [articleDetail, setArticleDetail] = useState({
     id: "",
     title: "",
-    content: "",
     auther: {
       name: "",
       password: "",
     },
     thumbUp: 0,
+    content: "",
     createTime: "",
+    updateTime: "",
   });
   const [params] = useSearchParams();
   const id = params.get("id");
   useEffect(() => {
     const loadArticle = async () => {
       const res = await http.get(`/blog/${id}`);
-      const { title, auther, content, thumbUp, createTime } = res;
+      const { title, auther, content, thumbUp, createTime, updateTime } = res;
       setArticleDetail({
         id: id,
         title,
@@ -29,6 +30,7 @@ function Detail() {
         content,
         thumbUp,
         createTime,
+        updateTime,
       });
     };
     loadArticle().then();
@@ -47,14 +49,25 @@ function Detail() {
         <>
           <div className="detail_header">
             <div className="detail_meta">
-              <span>创建时间:</span>
-              <time>
-                {moment(articleDetail.createTime).format("YYYY-MM-DD")}
-              </time>
+              <div className="article_time">
+                <span>创建时间:</span>
+                <time>
+                  {moment(articleDetail.createTime).format("YYYY-MM-DD")}
+                </time>
+              </div>
+              <div className="article_time">
+                <span>更新时间:</span>
+                <time>
+                  {moment(articleDetail.updateTime).format("YYYY-MM-DD")}
+                </time>
+              </div>
             </div>
             <h1 className="detail_title">{articleDetail.title}</h1>
           </div>
-          <section className="detail_content">{articleDetail.content}</section>
+          <section
+            className="detail_content"
+            dangerouslySetInnerHTML={{ __html: articleDetail.content }}
+          ></section>
           <div className="detail_remark">
             <span>作者：{articleDetail.auther.name}</span>
             <div
