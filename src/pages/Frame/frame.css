@@ -1,0 +1,48 @@
+.frame {
+  width: 100%;
+  height: 100%;
+}
+
+.frame img {
+  min-width: 1024px;
+  min-height: 100%;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.4;
+}
+.frame .main {
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 25px 50px 0 rgb(0 0 0 / 10%);
+  width: 90%;
+  margin: 20px auto;
+  z-index: 999;
+  background-color: rgba(0, 178, 255, 0.04);
+  opacity: 0.8;
+}
+.frame .main .navBar {
+  width: 100%;
+  height: 60px;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 25px 50px 0 rgb(0 0 0 / 10%);
+  margin: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+}
+.frame .main .navBar .menuItem {
+  margin-right: 80px;
+}
+.frame .main .navBar .highLight {
+  color: #087fe6;
+}
+.frame .main .navBar .highLight a {
+  color: #087fe6;
+}
+@media screen and (min-width: 768px) {
+  .frame {
+    font-size: 1.5rem;
+  }
+}

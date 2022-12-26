@@ -1,0 +1,106 @@
+.home {
+  color: black;
+  font-size: 0.8rem;
+}
+
+.home .home_content {
+  margin: 0 10%;
+  padding: 30px 0;
+  max-width: 850px;
+}
+.home .home_content .article_list {
+  width: 100%;
+  list-style-type: none;
+  text-align: left;
+}
+.home .home_content .article_list .article_item {
+  margin: 0 0 10px 0;
+  background-color: white;
+}
+.home .home_content .article_list .article_item h3 {
+  font-size: 1rem;
+  font-weight: normal;
+  color: #5c94c5;
+  line-height: 30px;
+  margin-left: 10px;
+}
+.home .home_content .article_list .article_item p {
+  height: 100px;
+  color: #999;
+  font-size: 0.8rem;
+  margin: 5px 0 0 10px;
+  line-height: 20px;
+  overflow: hidden;
+}
+.home .home_content .article_list .article_item .article_operator {
+  margin: 10px 0 10px 10px;
+  color: #c7c7c7;
+  display: grid;
+  grid-template-rows: repeat(2, 50%);
+  grid-template-columns: repeat(2, 50%);
+  grid-gap: 4px;
+}
+.home .home_content .article_list .article_item .article_operator span {
+  grid-row: 1/2;
+  grid-column: 1/2;
+}
+.home .home_content .article_list .article_item .article_operator .thumbs {
+  grid-row: 1/2;
+  grid-column: 2/3;
+  cursor: pointer;
+}
+.home .home_content .article_list .article_item .article_operator .thumbs i {
+  font-size: 1.5rem;
+  color: dodgerblue;
+}
+.home
+  .home_content
+  .article_list
+  .article_item
+  .article_operator
+  .thumbs
+  button {
+  color: dodgerblue;
+  cursor: pointer;
+  text-align: left;
+}
+.home .home_content .article_list .article_item .article_operator .continue {
+  grid-row: 2/3;
+  grid-column: 2/3;
+  width: 100px;
+  color: dodgerblue;
+  cursor: pointer;
+}
+
+.home .home_content .article_list .article_item .article_divide {
+  width: 50%;
+  border-top: 1px solid #ddd;
+}
+@media screen and (min-width: 768px) {
+  .home .home_content .article_list .article_item h3 {
+    font-size: 1.2rem;
+  }
+
+  .home .home_content .article_list .article_item p {
+    font-size: 1rem;
+  }
+  .home .home_content .article_list .article_item .article_operator {
+    font-size: 1rem;
+  }
+  .home .home_content .article_list .article_item .article_operator {
+    grid-template-rows: repeat(1, 100%);
+    grid-template-columns: repeat(3, 33.333%);
+  }
+  .home .home_content .article_list .article_item .article_operator time {
+    grid-row: 1/2;
+    grid-column: 1/2;
+  }
+  .home .home_content .article_list .article_item .article_operator .thumbs {
+    grid-row: 1/2;
+    grid-column: 2/3;
+  }
+  .home .home_content .article_list .article_item .article_operator .continue {
+    grid-row: 1/2;
+    grid-column: 3/4;
+  }
+}

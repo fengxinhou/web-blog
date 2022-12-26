@@ -1,41 +1,130 @@
 .App {
   text-align: center;
+  width: 100%;
+  height: 100vh;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 75px;
+}
+body {
+  font-weight: 400;
+  overflow-x: hidden;
+  position: relative;
+  font-family: "Centra", sans-serif !important;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+}
+p,
+a,
+li,
+button,
+ul {
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  text-decoration: none;
+}
+ol,
+li {
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  list-style: none;
+}
+hr {
+  border: none;
+}
+a:hover {
+  text-decoration: none;
+}
+img {
+  width: 100%;
+  height: auto;
+}
+button {
+  border: 0;
+  background-color: transparent;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+input,
+label {
+  margin: 0.4rem 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.w-e-text-container {
+  text-align: left;
+}
+.editor-content-view {
+  border: 3px solid #ccc;
+  border-radius: 5px;
+  padding: 0 10px;
+  margin-top: 20px;
+  overflow-x: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.editor-content-view p,
+.editor-content-view li {
+  white-space: pre-wrap; /* 保留空格 */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.editor-content-view blockquote {
+  border-left: 8px solid #d0e5f2;
+  padding: 10px 10px;
+  margin: 10px 0;
+  background-color: #f1f1f1;
 }
 
-.App-link {
-  color: #61dafb;
+.editor-content-view code {
+  font-family: monospace;
+  background-color: #eee;
+  padding: 3px;
+  border-radius: 3px;
+}
+.editor-content-view pre > code {
+  display: block;
+  padding: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.editor-content-view table {
+  border-collapse: collapse;
 }
+.editor-content-view td,
+.editor-content-view th {
+  border: 1px solid #ccc;
+  min-width: 50px;
+  height: 20px;
+}
+.editor-content-view th {
+  background-color: #f1f1f1;
+}
+
+.editor-content-view ul,
+.editor-content-view ol {
+  padding-left: 20px;
+}
+
+.editor-content-view input[type="checkbox"] {
+  margin-right: 5px;
+}
+
 button {
   color: #fff;
   width: 100px;
@@ -47,5 +136,9 @@ button {
 button:hover {
   cursor: pointer;
   background-color: #fff;
+  color: #121212;
+}
+a {
+  text-decoration: none;
   color: #121212;
 }
