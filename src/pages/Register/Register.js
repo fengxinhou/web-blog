@@ -1,73 +1,65 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import "./register.css";
 import bgImg from "../../assets/img/bg.webp";
-import "./login.css";
+import { useNavigate } from "react-router-dom";
 import { useStore } from "../../store";
 import { observer } from "mobx-react-lite";
-
-function Login() {
-  const [newUser, setNewUser] = useState({
-    id: 0,
+function Register() {
+  const [user, setUser] = useState({
+    id: -1,
     name: "",
     password: "",
   });
-  const { loginStore } = useStore();
+  const { registerStore } = useStore();
   const navigate = useNavigate();
   const onFormUpdate = (key, value) => {
-    setNewUser({
-      ...newUser,
+    setUser({
+      ...user,
       [key]: value,
     });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, password } = newUser;
-    if (!name || !password) {
-      alert("用户名或密码不为空");
-      //进行报错处理
-    }
+    const { name, password } = user;
     try {
-      await loginStore.getToken({ name, password });
-      navigate("/");
+      await registerStore.register({ name, password });
+      navigate("/login");
     } catch (error) {
       alert(error);
     }
   };
   return (
-    <div className="login">
+    <div className="register">
       <img src={bgImg} alt="bgImg" />
-      <form className="loginForm" onSubmit={handleSubmit}>
+      <form className="registerForm" onSubmit={handleSubmit}>
         <label>
-          用户名：
+          用&nbsp;户&nbsp;名&nbsp;&nbsp;：&nbsp;
           <input
             type="text"
             placeholder="请输入用户名"
-            value={newUser.name}
+            value={user.name}
             onChange={(e) => {
               onFormUpdate("name", e.target.value);
             }}
           />
         </label>
         <label>
-          密&nbsp;&nbsp;&nbsp;码：
+          密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;：&nbsp;&nbsp;
           <input
             type="password"
             placeholder="请输入密码"
-            value={newUser.password}
+            value={user.password}
             onChange={(e) => {
               onFormUpdate("password", e.target.value);
             }}
           />
         </label>
-        <div className="go_register">
-          <Link to={"/register"}>还没账号，去注册</Link>
-        </div>
-        <div className="loginButton">
-          <button type="submit">登录</button>
+        <div className="registerButton">
+          <button type="submit">注册</button>
         </div>
       </form>
     </div>
   );
 }
 
-export default observer(Login);
+export default observer(Register);

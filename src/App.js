@@ -8,6 +8,7 @@ import { history } from "./utils";
 import { lazy, Suspense } from "react";
 
 const Login = lazy(() => import("./pages/Login/Login"));
+const Register = lazy(() => import("./pages/Register/Register"));
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <div className="App">
           <Routes>
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </div>
       </Suspense>
