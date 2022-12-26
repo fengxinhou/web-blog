@@ -1,0 +1,77 @@
+.article {
+  color: black;
+  width: 90%;
+  height: 80vh;
+  margin: 20px auto;
+  font-size: 0.8rem;
+  text-align: left;
+}
+.article .search_article {
+  width: 90%;
+  margin-bottom: 12px;
+}
+
+.article .search_article input {
+  height: 30px;
+  width: 55%;
+  font-size: 0.7rem;
+  margin-left: 10px;
+}
+.article .article_table {
+  width: 90%;
+  height: 200px;
+  text-align: center;
+}
+
+.article .article_table thead th {
+  padding: 10px;
+  background-color: rgba(92, 148, 197, 0.6);
+}
+.article .article_table tr:nth-child(odd) {
+  background: #fff;
+}
+.article .article_table tr:nth-child(even) {
+  background: #f5fafa;
+}
+
+.article .article_table td {
+  padding: 6px;
+}
+.article .article_table td .operator_button {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.article .article_table td .operator_button button {
+  cursor: pointer;
+  color: #999;
+  padding: 2px 4px;
+  font-size: 0.8rem;
+  border-radius: 20px;
+}
+.article .article_table td .operator_button .edit {
+  background: rgba(30, 144, 255, 0.67);
+  color: #fff;
+}
+.article .article_table td .operator_button .danger {
+  background: rgba(255, 0, 0, 0.55);
+  border: 1px solid rgba(255, 0, 0, 0.55);
+  color: #fff;
+}
+@media screen and (min-width: 768px) {
+  .article {
+    font-size: 1rem;
+  }
+  .article .search_article input {
+    width: 40%;
+    font-size: 0.9rem;
+  }
+  .article .article_table td .operator_button {
+    width: 60%;
+  }
+  .article .article_table td .operator_button button {
+    padding: 3px 6px;
+    font-size: 1rem;
+  }
+}
