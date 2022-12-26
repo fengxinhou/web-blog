@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import {
+  unstable_HistoryRouter as HistoryRouter,
+  Route,
+  Routes,
+} from "react-router-dom";
+import { history } from "./utils";
+import { lazy, Suspense } from "react";
+
+const Login = lazy(() => import("./pages/Login/Login"));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HistoryRouter history={history}>
+      <Suspense
+        fallback={
+          <div
+            style={{
+              textAlign: "center",
+              marginTop: 200,
+            }}
+          >
+            loading...
+          </div>
+        }
+      >
+        <div className="App">
+          <Routes>
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </div>
+      </Suspense>
+    </HistoryRouter>
   );
 }
 
