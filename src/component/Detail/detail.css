@@ -1,0 +1,74 @@
+.detail {
+  font-size: 0.8rem;
+  margin: 10px auto;
+  width: 90%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  overflow-y: auto;
+}
+.detail .detail_header {
+  padding: 15px 15px 0 15px;
+  height: 100px;
+}
+
+.detail .detail_meta {
+  margin: 0 0 15px 0;
+  color: #666666;
+  display: flex;
+  justify-content: space-between;
+}
+.detail .detail_meta span {
+  margin-right: 10px;
+}
+.detail .detail_content {
+  margin: 10px auto;
+  width: 95%;
+  font-size: 0.8rem;
+}
+.detail .detail_remark {
+  width: 90%;
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #555555;
+}
+.detail .detail_remark i {
+  font-size: 1rem;
+}
+.detail footer {
+  height: 30px;
+  width: 95%;
+  margin: 10px auto;
+}
+.detail a {
+  text-decoration: none;
+  color: #555555;
+  border: 1px solid #c7c7c7;
+  border-radius: 20px;
+  padding: 3px 6px;
+  cursor: pointer;
+  display: flex;
+  float: right;
+  font-size: 0.8rem;
+}
+
+@media screen and (min-width: 768px) {
+  .detail .detail_header {
+    font-size: 1rem;
+  }
+  .detail .detail_remark {
+    font-size: 1rem;
+  }
+  .detail .detail_remark i {
+    font-size: 1.3rem;
+  }
+  .detail .detail_content {
+    font-size: 1rem;
+  }
+  .detail a {
+    font-size: 1rem;
+  }
+}
