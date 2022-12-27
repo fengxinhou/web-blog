@@ -43,11 +43,13 @@
 }
 .home .home_content .article_list .article_item p {
   height: 100px;
-  color: #999;
+  text-indent: 2rem;
+  color: rgba(18, 18, 18, 0.76);
   font-size: 0.8rem;
   margin: 5px 0 0 10px;
   line-height: 20px;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 .home .home_content .article_list .article_item .article_operator {
   margin: 10px 0 10px 10px;

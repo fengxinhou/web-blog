@@ -2,6 +2,7 @@
   font-size: 0.8rem;
   margin: 10px auto;
   width: 90%;
+  /*height: 90vh;*/
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -21,6 +22,10 @@
 }
 .detail .detail_meta span {
   margin-right: 10px;
+}
+.detail section {
+  min-height: 500px;
+  text-indent: 2rem;
 }
 .detail .detail_content {
   margin: 10px auto;
