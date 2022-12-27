@@ -7,6 +7,7 @@ import {
 import { history } from "./utils";
 import { lazy, Suspense } from "react";
 import Detail from "./component/Detail/Detail";
+import { AuthComponent } from "./component/AuthComponent";
 
 const Login = lazy(() => import("./pages/Login/Login"));
 const Register = lazy(() => import("./pages/Register/Register"));
@@ -32,7 +33,14 @@ function App() {
       >
         <div className="App">
           <Routes>
-            <Route path="/" element={<Frame />}>
+            <Route
+              path="/"
+              element={
+                <AuthComponent>
+                  <Frame />
+                </AuthComponent>
+              }
+            >
               <Route index element={<Home />} />
               <Route path="/publish" element={<Publish />} />
               <Route path="/article" element={<Article />} />

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./home.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Paging from "../Paging/Paging";
 import { giveThumbUp } from "../../server/api";
 import { http } from "../../utils";
@@ -57,41 +57,48 @@ function Home() {
 
   return (
     <div className="home">
-      <div className="home_content">
-        <ol className="article_list">
-          {blog.blogList
-            .slice(beginIndex, beginIndex + pageSize)
-            .map((item) => (
-              <li className="article_item" key={item.id}>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <div className="article_operator">
-                  <span>作者：{item.auther.name}</span>
-                  <div
-                    className="thumbs"
-                    onClick={() => handleClickThumb(item.id)}
-                  >
-                    <i className="iconfont">&#xe65d;</i>
-                    <button>点赞数:&nbsp;{item.thumbUp}</button>
+      {blog.blogList.length === 0 ? (
+        <div className="blank_list">
+          <p>空空如也😫</p>
+          <Link to={"/publish"}>发表新文章&nbsp;👉&nbsp;</Link>
+        </div>
+      ) : (
+        <div className="home_content">
+          <ol className="article_list">
+            {blog.blogList
+              .slice(beginIndex, beginIndex + pageSize)
+              .map((item) => (
+                <li className="article_item" key={item.id}>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                  <div className="article_operator">
+                    <span>作者：{item.auther.name}</span>
+                    <div
+                      className="thumbs"
+                      onClick={() => handleClickThumb(item.id)}
+                    >
+                      <i className="iconfont">&#xe65d;</i>
+                      <button>点赞数:&nbsp;{item.thumbUp}</button>
+                    </div>
+                    <button
+                      className="continue"
+                      onClick={() => getArticleDetail(item.id)}
+                    >
+                      继续阅读
+                    </button>
                   </div>
-                  <button
-                    className="continue"
-                    onClick={() => getArticleDetail(item.id)}
-                  >
-                    继续阅读
-                  </button>
-                </div>
-                <hr className="article_divide" />
-              </li>
-            ))}
-        </ol>
-        <Paging
-          currentPage={currentPage}
-          pageSize={pageSize}
-          totalNumber={blog.totalNumber}
-          getPaging={getPaging}
-        />
-      </div>
+                  <hr className="article_divide" />
+                </li>
+              ))}
+          </ol>
+          <Paging
+            currentPage={currentPage}
+            pageSize={pageSize}
+            totalNumber={blog.totalNumber}
+            getPaging={getPaging}
+          />
+        </div>
+      )}
     </div>
   );
 }

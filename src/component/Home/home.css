@@ -2,7 +2,25 @@
   color: black;
   font-size: 0.8rem;
 }
-
+.home .blank_list {
+  height: 50vh;
+  margin-top: 300px;
+}
+.home .blank_list p {
+  font-size: 2rem;
+  color: rgba(92, 148, 197, 0.76);
+  margin-bottom: 20px;
+}
+.home .blank_list a {
+  text-decoration: none;
+  color: #fff;
+  background-color: deepskyblue;
+  border: 1px solid #c7c7c7;
+  border-radius: 20px;
+  padding: 8px 11px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
 .home .home_content {
   margin: 30px auto;
   max-width: 850px;
@@ -79,7 +97,6 @@
   .home .home_content .article_list .article_item h3 {
     font-size: 1.2rem;
   }
-
   .home .home_content .article_list .article_item p {
     font-size: 1rem;
   }

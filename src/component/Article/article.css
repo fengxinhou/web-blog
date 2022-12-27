@@ -6,6 +6,25 @@
   font-size: 0.8rem;
   text-align: left;
 }
+.blank_article_list {
+  height: 50vh;
+  margin-top: 300px;
+}
+.blank_article_list p {
+  font-size: 2rem;
+  color: rgba(92, 148, 197, 0.76);
+  margin-bottom: 20px;
+}
+.blank_article_list a {
+  text-decoration: none;
+  color: #fff;
+  background-color: deepskyblue;
+  border: 1px solid #c7c7c7;
+  border-radius: 20px;
+  padding: 8px 11px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
 .article .search_article {
   width: 90%;
   margin-bottom: 12px;

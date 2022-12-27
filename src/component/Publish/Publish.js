@@ -65,7 +65,7 @@ function Publish() {
           />
         </label>
       </div>
-      <div id="div1"></div>
+      <div id="div1" />
       <div className="article_button">
         <button onClick={handleClickSubmit}>
           <span>{id ? "更新" : "发布"}文章</span>

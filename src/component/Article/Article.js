@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./article.css";
 import Paging from "../Paging/Paging";
 import { deleteArticle } from "../../server/api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { http } from "../../utils";
 import moment from "moment/moment";
 function Article() {
@@ -63,7 +63,14 @@ function Article() {
     navigate(`/publish?id=${values.id}`);
   };
 
-  return (
+  return filterData.length === 0 ? (
+    <div>
+      <div className="blank_article_list">
+        <p>空空如也😫</p>
+        <Link to={"/publish"}>发表新文章&nbsp;👉&nbsp;</Link>
+      </div>
+    </div>
+  ) : (
     <div className="article">
       <div className="search_article">
         <select name={""} id={""} onChange={(e) => typeChange(e.target.value)}>
