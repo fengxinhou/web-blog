@@ -83,7 +83,7 @@
   .login .loginForm input[type="password"] {
     width: 40%;
     font-size: 1.2rem;
-    height: 13px;
+    height: 35px;
   }
   .login .loginForm .loginButton button {
     font-size: 1.2rem;

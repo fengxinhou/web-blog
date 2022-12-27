@@ -10,6 +10,10 @@
   width: 90%;
   margin-bottom: 12px;
 }
+.article .search_article select {
+  height: 30px;
+  font-size: 0.8rem;
+}
 
 .article .search_article input {
   height: 30px;
@@ -38,7 +42,7 @@
   padding: 6px;
 }
 .article .article_table td .operator_button {
-  width: 100%;
+  width: 80%;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -46,7 +50,7 @@
 .article .article_table td .operator_button button {
   cursor: pointer;
   color: #999;
-  padding: 2px 4px;
+  width: 50px;
   font-size: 0.8rem;
   border-radius: 20px;
 }
@@ -61,6 +65,9 @@
 }
 @media screen and (min-width: 768px) {
   .article {
+    font-size: 1rem;
+  }
+  .article .search_article select {
     font-size: 1rem;
   }
   .article .search_article input {
