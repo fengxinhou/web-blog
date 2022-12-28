@@ -22,7 +22,7 @@ function Frame() {
   const blogMenu = JSON.parse(parseToken());
   return (
     <div className="frame">
-      <img src={mainBg} alt="mainBg" />
+      <img className="frame_bg" src={mainBg} alt="mainBg" />
       <div className="main">
         <div className="navBar">
           <div className="userInfo">

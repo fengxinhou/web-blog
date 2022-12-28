@@ -19,6 +19,7 @@ function Detail() {
   });
   const [params] = useSearchParams();
   const id = params.get("id");
+
   useEffect(() => {
     const loadArticle = async () => {
       const res = await http.get(`/blog/${id}`);

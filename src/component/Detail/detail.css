@@ -25,7 +25,6 @@
 }
 .detail section {
   min-height: 500px;
-  text-indent: 2rem;
 }
 .detail .detail_content {
   margin: 10px auto;
@@ -58,6 +57,53 @@
   display: flex;
   float: right;
   font-size: 0.8rem;
+}
+
+.detail .detail_content p,
+.detail .detail_content li {
+  text-indent: 2rem;
+  white-space: pre-wrap;
+  line-height: 2rem;
+}
+
+.detail .detail_content blockquote {
+  border-left: 8px solid #d0e5f2;
+  padding: 10px 10px;
+  margin: 10px 0;
+  background-color: #f1f1f1;
+}
+
+.detail .detail_content code {
+  font-family: monospace;
+  background-color: #eee;
+  padding: 3px;
+  border-radius: 3px;
+}
+.detail .detail_content pre > code {
+  display: block;
+  padding: 10px;
+}
+
+.detail .detail_content table {
+  border-collapse: collapse;
+}
+.detail .detail_content td,
+.detail .detail_content th {
+  border: 1px solid #ccc;
+  min-width: 50px;
+  height: 20px;
+}
+.detail .detail_content th {
+  background-color: #f1f1f1;
+}
+
+.detail .detail_content ul,
+.detail .detail_content ol {
+  padding-left: 20px;
+}
+
+.detail .detail_content input[type="checkbox"] {
+  margin-right: 5px;
 }
 
 @media screen and (min-width: 768px) {

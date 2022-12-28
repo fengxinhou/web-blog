@@ -24,9 +24,10 @@
 .home .home_content {
   margin: 30px auto;
   max-width: 850px;
+  min-height: 80vh;
 }
 .home .home_content .article_list {
-  width: 100%;
+  width: 90%;
   list-style-type: none;
   text-align: left;
 }
