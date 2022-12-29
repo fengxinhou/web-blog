@@ -1,4 +1,4 @@
-import { makeAutoObservable, runInAction } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { getToken, http, removeToken, setToken } from "../utils";
 
 const URL = "/login";
@@ -9,9 +9,7 @@ class LoginStore {
   }
   getToken = async ({ name, password }) => {
     const res = await http.post(URL, { name, password });
-    runInAction(() => {
-      this.token = res.JWT;
-    });
+    this.token = res.JWT;
     setToken(this.token);
   };
   loginOut = () => {

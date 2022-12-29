@@ -64,6 +64,10 @@
   text-indent: 2rem;
   white-space: pre-wrap;
   line-height: 2rem;
+  padding: 5px 0;
+}
+.detail .detail_content p > span {
+  white-space: pre-wrap;
 }
 
 .detail .detail_content blockquote {
@@ -86,12 +90,15 @@
 
 .detail .detail_content table {
   border-collapse: collapse;
+  max-width: 800px;
+  min-width: 500px;
 }
 .detail .detail_content td,
 .detail .detail_content th {
   border: 1px solid #ccc;
-  min-width: 50px;
-  height: 20px;
+  min-width: 30px;
+  height: 30px;
+  max-width: 50px;
 }
 .detail .detail_content th {
   background-color: #f1f1f1;

@@ -26,10 +26,11 @@
   max-width: 850px;
 }
 .home .home_content .article_list {
-  width: 90%;
+  width: 100%;
   margin: 10px auto;
   list-style-type: none;
   text-align: left;
+  min-height: 80vh;
 }
 .home .home_content .article_list .article_item {
   margin: 0 0 10px 0;

@@ -46,12 +46,7 @@ function Frame() {
             <span>{blogMenu.name}</span>
           </div>
           <div className="signOut" onClick={() => setIsOpen(!isOpen)}>
-            <i
-              className="iconfont"
-              // style={{ fontSize: "2rem", color: "#087fe6" }}
-            >
-              &#xe605;
-            </i>
+            <i className="iconfont">&#xe605;</i>
             <Logout
               className="dropDown"
               open={isOpen}

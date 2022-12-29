@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import Paging from "../Paging/Paging";
 import { giveThumbUp } from "../../server/api";
 import { http } from "../../utils";
-import Footer from "../Footer/Footer";
 function Home() {
   const [blog, setBlog] = useState({
     blogList: [],
@@ -100,7 +99,6 @@ function Home() {
           />
         </div>
       )}
-      <Footer />
     </div>
   );
 }
