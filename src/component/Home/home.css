@@ -27,6 +27,7 @@
 }
 .home .home_content .article_list {
   width: 90%;
+  margin: 10px auto;
   list-style-type: none;
   text-align: left;
 }

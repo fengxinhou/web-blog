@@ -1,0 +1,39 @@
+.logout {
+  position: absolute;
+  top: 40px;
+  width: 180px;
+  right: 0;
+  text-align: left;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 25px 50px 0 rgb(0 0 0 / 10%);
+  background-color: #fff;
+}
+.logout .content {
+  display: flex;
+}
+.logout .content .iconfont {
+  color: rgba(236, 9, 9, 0.76);
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.logout p {
+  /*margin-top: 8px;*/
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+}
+.logout footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px auto;
+  width: 80%;
+}
+.logout button {
+  border: 1px solid #121212;
+  color: #121212;
+  width: 50px;
+  cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+  .logout {
+    top: 50px;
+  }
+}

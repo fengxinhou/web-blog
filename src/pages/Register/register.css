@@ -17,8 +17,8 @@
 .register .registerForm {
   box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 25px 50px 0 rgb(0 0 0 / 10%);
   width: 50%;
-  height: 350px;
-  margin: 200px auto;
+  height: 280px;
+  margin: 270px auto;
   font-weight: bold;
   grid-row: 3/5;
   font-size: 0.8rem;

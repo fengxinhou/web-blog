@@ -1,5 +1,5 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import { getToken, http, setToken } from "../utils";
+import { getToken, http, removeToken, setToken } from "../utils";
 
 const URL = "/login";
 class LoginStore {
@@ -13,6 +13,10 @@ class LoginStore {
       this.token = res.JWT;
     });
     setToken(this.token);
+  };
+  loginOut = () => {
+    this.token = "";
+    removeToken();
   };
 }
 
